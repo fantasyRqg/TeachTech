@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册页面</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/register.css"/>
+</head>
+<body>
+
+<div class="header">
+    <div class="header_top">
+        <ul>
+            <li class="li1"><a href="index.html"></a></li>
+            <li class="li2"></li>
+            <li class="li3">注册教链账号</li>
+            <li class="li4">我已注册，现在就</li>
+            <li class="li5"><a href="login.html"></a></li>
+        </ul>
+        <div class="nav"></div>
+    </div>
+</div>
+<div class="content">
+    <div class="info">
+        <p id="error_info" class="my-notify-error" style="display: none">Error like this</p>
+        <form action="#" method="post">
+            <div id="username" class="box">
+                <div class="title">用户名</div>
+                <input type="text" class="username" name="login_username" placeholder="请设置用户名" required/>
+                <!--<span class="hint ">区域缩写+姓名如：bjwxm > 北京王小明</span>-->
+            </div>
+
+            <div id="nick_name" class="box">
+                <div class="title">昵称</div>
+                <input type="text" class="contact" name="contact_name" placeholder="请输入昵称" required/>
+            </div>
+            <div id="phone" class="box">
+                <div class="title">手机号</div>
+                <input type="text" class="phone" name="phone" placeholder="请输入手机号" required/>
+            </div>
+            <div id="password" class="box">
+                <div class="title">密码</div>
+                <input type="password" class="password" name="password" placeholder="请输入登录密码" required/>
+
+                <div class="pass_rule hide">
+                    <img src="img/password.png" alt="密码提示">
+                </div>
+            </div>
+            <div id="password_confirm" class="box">
+                <div class="title">确认密码</div>
+                <input type="password" class="password_confirm" name="sure" placeholder="请再次输入密码" required/>
+
+            </div>
+            <div id="verify" class="box">
+                <div class="title">验证码</div>
+                <input type="text" class="verify" name="verify" placeholder="请输入验证码" required/>
+            </div>
+            <div class="box verify_text">
+                <img src="img/yanzhengma.png" alt="验证码">
+                <a href="##" class="change">看不清,换一张</a>
+            </div>
+            <div class="agree">
+                <p>
+                    <input type="checkbox" checked="checked">
+                    阅读并同意
+                    <a href="##">《教链用户服务协议》</a>
+                </p>
+            </div>
+            <div id="button">
+                <a id="register" class="login">注册</a>
+            </div>
+        </form>
+        <p class="foot">2016 ©SchoolLink</p>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/pw.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
+
+
+
