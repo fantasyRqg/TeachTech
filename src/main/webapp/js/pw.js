@@ -38,6 +38,7 @@ $(document).ready(function () {
                     localStorage.userNick = data.data.nickName;
                     localStorage.userToken = data.data.token;
                     localStorage.userName = data.data.loginName;
+                    localStorage.userId = data.data.id;
                     window.location.href = "index.html";
                 } else {
                     showLoginError(data.message);

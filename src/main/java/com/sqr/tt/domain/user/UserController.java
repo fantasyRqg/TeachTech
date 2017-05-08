@@ -117,4 +117,47 @@ public class UserController {
         }
         return response;
     }
+
+
+    @GetMapping(path = "phone/right")
+    @ResponseBody
+    public Response<String> rightPhone(@RequestParam String phone, @RequestParam String pwd) {
+        Response<String> response = new Response<>();
+
+        UserEntity user = mUserRepository.findByPhone(phone);
+
+        if (user == null) {
+            response.setMessage("信息错误");
+            response.setStatus(FAILURE);
+            return response;
+        }
+
+
+        user.setPassword(pwd);
+        mUserRepository.save(user);
+        response.setStatus(SUCCESS);
+
+        return response;
+    }
+
+    @PostMapping(path = "password")
+    @ResponseBody
+    public Response<String> changePassword(@RequestParam int id, @RequestParam String token, @RequestParam String pwd) {
+
+        Response<String> response = new Response<>();
+
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+
+        if (user == null) {
+            response.setMessage("信息错误");
+            response.setStatus(FAILURE);
+            return response;
+        }
+
+        user.setPassword(pwd);
+        mUserRepository.save(user);
+
+
+        return response;
+    }
 }

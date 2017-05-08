@@ -10,9 +10,12 @@ CREATE TABLE teach.user
   nick_name  NVARCHAR(20)    NOT NULL,
   protrait   VARCHAR(20) COMMENT '用户头像文件名',
   phone      VARCHAR(20)     NOT NULL,
-  token      CHAR(20)
+  token      CHAR(20),
+  remaining  REAL COMMENT '余额'
 );
-CREATE UNIQUE INDEX table_name_login_name_uindex
+CREATE UNIQUE INDEX user_login_name_uindex
   ON teach.user (login_name);
+CREATE UNIQUE INDEX user_name_phone_uindex
+  ON teach.user (phone);
 
 
