@@ -19,3 +19,14 @@ CREATE UNIQUE INDEX user_name_phone_uindex
   ON teach.user (phone);
 
 
+CREATE TABLE teach.teacher
+(
+  id           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name         NVARCHAR(30),
+  subject      NVARCHAR(30) COMMENT '涉及学科',
+  graduate     NVARCHAR(30) COMMENT '毕业院校',
+  teach_start  INT COMMENT '开始任教年份',
+  introduction NVARCHAR(300) COMMENT '经历介绍'
+);
+ALTER TABLE teach.teacher
+  COMMENT = '教师信息表';
