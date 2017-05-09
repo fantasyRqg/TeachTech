@@ -15,6 +15,7 @@ public class UserEntity {
     private String mProtrait;
     private String mPhone;
     private String mToken;
+    private Integer mRemaining;
 
     @Id
     @Column(name = "id")
@@ -112,5 +113,15 @@ public class UserEntity {
         result = 31 * result + (mPhone != null ? mPhone.hashCode() : 0);
         result = 31 * result + (mToken != null ? mToken.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "remaining")
+    public Integer getRemaining() {
+        return mRemaining;
+    }
+
+    public void setRemaining(Integer remaining) {
+        mRemaining = remaining;
     }
 }
