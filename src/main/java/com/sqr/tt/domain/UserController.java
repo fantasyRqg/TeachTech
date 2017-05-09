@@ -1,14 +1,21 @@
-package com.sqr.tt.domain.user;
+package com.sqr.tt.domain;
 
+import com.sqr.tt.entity.CourseEntity;
+import com.sqr.tt.entity.JoinCourseUserEntity;
 import com.sqr.tt.entity.Response;
 import com.sqr.tt.entity.UserEntity;
+import com.sqr.tt.repo.CourseRepository;
+import com.sqr.tt.repo.JoinCourseUserRepo;
 import com.sqr.tt.repo.UserRepository;
+import com.sqr.tt.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import static com.sqr.tt.Commons.FAILURE;
 import static com.sqr.tt.Commons.SUCCESS;
@@ -18,10 +25,15 @@ import static com.sqr.tt.Commons.SUCCESS;
  */
 
 @Controller
-@RequestMapping(path = "/user")
+@RequestMapping(path = "user")
 public class UserController {
     @Autowired
     private UserRepository mUserRepository;
+    @Autowired
+    private CourseRepository mCourseRepository;
+    @Autowired
+    private JoinCourseUserRepo mJoinCourseUserRepo;
+
 
     private static SecureRandom sRandom = new SecureRandom();
 
@@ -173,5 +185,71 @@ public class UserController {
     }
 
 
+    @PostMapping(path = "modify/nickName")
+    @ResponseBody
+    public Response<String> modifyNickName(@RequestParam int id, @RequestParam String token, @RequestParam String nickName) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<String> response = new Response<>();
 
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
+
+
+        user.setNickName(nickName);
+
+        mUserRepository.save(user);
+
+        response.setStatus(SUCCESS);
+        return response;
+    }
+
+    @PostMapping(path = "modify/photo")
+    @ResponseBody
+    public Response<String> modifyPhoto(@RequestParam int id, @RequestParam String token, @RequestParam String photo) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<String> response = new Response<>();
+
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
+        if (!FileUtil.fileExist(photo)) {
+            response.setStatus(FAILURE);
+            response.setMessage("photo not upload");
+
+            return response;
+        }
+
+        user.setProtrait(photo);
+        mUserRepository.save(user);
+
+        response.setStatus(SUCCESS);
+        return response;
+    }
+
+    @GetMapping(path = "courses")
+    @ResponseBody
+    public Response<Iterable<CourseEntity>> getMyCourses(@RequestParam int id, @RequestParam String token) {
+        ''
+
+        Iterable<JoinCourseUserEntity> allCourses = mJoinCourseUserRepo.findAllByUserId(id);
+        List<Long> courseIds = new ArrayList<>();
+        for (JoinCourseUserEntity jcue : allCourses) {
+            courseIds.add((long) jcue.getCourseId());
+        }
+
+        Iterable<CourseEntity> all = mCourseRepository.findAll(courseIds);
+
+
+        response.setData(all);
+        response.setStatus(SUCCESS);
+        return response;
+
+    }
 }

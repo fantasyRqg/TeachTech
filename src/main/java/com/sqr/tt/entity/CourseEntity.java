@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by rqg on 09/05/2017.
  */
 @Entity
-@Table(name = "course", schema = "teach", catalog = "")
+@Table(name = "course", schema = "teach")
 public class CourseEntity {
     private int mId;
     private String mName;
@@ -74,6 +74,7 @@ public class CourseEntity {
     public void setPrice(int price) {
         mPrice = price;
     }
+
 
     @Override
     public boolean equals(Object o) {
