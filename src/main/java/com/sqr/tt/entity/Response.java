@@ -1,5 +1,8 @@
 package com.sqr.tt.entity;
 
+import static com.sqr.tt.Commons.FAILURE;
+import static com.sqr.tt.Commons.SUCCESS;
+
 /**
  * Created by rqg on 07/05/2017.
  */
@@ -30,5 +33,18 @@ public class Response<T> {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public static <T> Response<T> noNUllResponse(T a, String errMsg) {
+        Response<T> response = new Response<>();
+        if (a == null) {
+            response.setMessage(errMsg);
+            response.setStatus(FAILURE);
+            return response;
+        }
+        response.setStatus(SUCCESS);
+        response.setMessage(SUCCESS);
+
+        return response;
     }
 }

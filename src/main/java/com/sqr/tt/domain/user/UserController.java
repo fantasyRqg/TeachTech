@@ -157,7 +157,21 @@ public class UserController {
         user.setPassword(pwd);
         mUserRepository.save(user);
 
+        response.setStatus(SUCCESS);
 
         return response;
     }
+
+
+    @GetMapping(path = "info")
+    @ResponseBody
+    public Response<UserEntity> getUserById(@RequestParam int id, @RequestParam String token) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+
+
+        return Response.noNUllResponse(user, "该用户不存在");
+    }
+
+
+
 }
