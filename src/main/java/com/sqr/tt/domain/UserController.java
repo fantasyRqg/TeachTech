@@ -236,7 +236,15 @@ public class UserController {
     @GetMapping(path = "courses")
     @ResponseBody
     public Response<Iterable<CourseEntity>> getMyCourses(@RequestParam int id, @RequestParam String token) {
-        ''
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<Iterable<CourseEntity>> response = new Response<>();
+
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
 
         Iterable<JoinCourseUserEntity> allCourses = mJoinCourseUserRepo.findAllByUserId(id);
         List<Long> courseIds = new ArrayList<>();
