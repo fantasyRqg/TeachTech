@@ -35,7 +35,7 @@ CREATE TABLE teach.course (
   id           INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name         NVARCHAR(40)             NOT NULL COMMENT '课程名称',
   introdcution NVARCHAR(100) COMMENT '课程描述',
-  teacherId    INT UNSIGNED             NOT NULL COMMENT '教师id',
+  teacher_id   INT UNSIGNED             NOT NULL COMMENT '教师id',
   video        VARCHAR(30)              NOT NULL COMMENT '课程视频文件',
   price        DECIMAL                  NOT NULL,
   image        VARCHAR(30)              NOT NULL
@@ -67,7 +67,7 @@ CREATE TABLE teach.verification
 
 
 INSERT INTO teach.course
-(name, introdcution, teacherId, image, video, price)
+(name, introdcution, teacher_id, image, video, price)
 VALUES
   ('Unity5.x 创造 3D VR游戏', NULL, 1, 'image/c_image_1.jpg', 'abc.mp4', FLOOR(RAND() * 401 + 100)),
   ('iOS逆向与安全', NULL, 2, 'image/c_image_2.jpg', 'abc.mp4', FLOOR(RAND() * 401 + 100)),

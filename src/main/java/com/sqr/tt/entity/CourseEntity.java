@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by rqg on 09/05/2017.
  */
 @Entity
-@Table(name = "course", schema = "teach")
+@Table(name = "course", schema = "teach", catalog = "")
 public class CourseEntity {
     private int mId;
     private String mName;
@@ -14,6 +14,7 @@ public class CourseEntity {
     private int mTeacherId;
     private String mVideo;
     private int mPrice;
+    private String mImage;
 
     @Id
     @Column(name = "id")
@@ -46,7 +47,7 @@ public class CourseEntity {
     }
 
     @Basic
-    @Column(name = "teacherId")
+    @Column(name = "teacher_id")
     public int getTeacherId() {
         return mTeacherId;
     }
@@ -75,7 +76,6 @@ public class CourseEntity {
         mPrice = price;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,5 +101,15 @@ public class CourseEntity {
         result = 31 * result + (mVideo != null ? mVideo.hashCode() : 0);
         result = 31 * result + mPrice;
         return result;
+    }
+
+    @Basic
+    @Column(name = "image")
+    public String getImage() {
+        return mImage;
+    }
+
+    public void setImage(String image) {
+        mImage = image;
     }
 }
