@@ -1,0 +1,74 @@
+/**
+ * Created by rqg on 11/05/2017.
+ */
+$(document).ready(function () {
+    function showComment(c, parent) {
+
+        var userName = c.userName;
+        var userId = c.userId;
+        var createTime = c.createTime;
+        var content = c.content;
+        var userImage = c.userImage || 'avator/default.jpg';
+
+        var commentItem = '        <div class="timeline-comment-wrapper js-comment-container">  \
+                                    <div class="avatar-parent-child timeline-comment-avatar">   \
+                                            <a href="#">    \
+                                            <img alt="" class="avatar rounded-1" height="44"   \
+                                        src="' +
+            userImage
+            + '" width="44">    \
+                                            </a>    \
+                                            </div>  \
+                                            <div id="" class="comment previewable-edit timeline-comment js-comment js-task-list-container    \
+                                        js-reorderable-task-lists reorderable-task-lists">  \
+                                        <div class="timeline-comment-header">   \
+                                            <div class="timeline-comment-header-text">  \
+                                            <strong>    \
+                                            <a href="/Caij" class="author">' +
+            userName
+            + '</a> \
+                                            </strong>   \
+                                            commented at  \
+                                            <a href="#issue-227924972" class="timestamp">   \
+                                            <relative-time datetime="2017-05-11T09:07:01Z" title="May 11, 2017, 5:07 PM GMT+8"> '
+            +
+            new Date(createTime).toDateString()
+            + ' </relative-time>    \
+                                        </a>    \
+                                        </div>  \
+                                        </div>  \
+                                        <div class="edit-comment-hide"> \
+                                            <table class="d-block"> \
+                                            <tbody class="d-block"> \
+                                            <tr class="d-block">    \
+                                            <td class="d-block comment-body markdown-body  js-comment-body">'
+            +
+            content.replace(/\n/g, "<br>")
+            + '</td>   \
+                                        </tr>   \
+                                        </tbody>    \
+                                        </table>    \
+                                        <div class="comment-reactions  js-reactions-container js-socket-channel js-updatable-content"   \
+                                        data-channel="reaction:issue:227924972" \
+                                        data-url="/_render_node/MDU6SXNzdWUyMjc5MjQ5NzI=/comments/reactions">   \
+                                            </div>  \
+                                            </div>  \
+                                            </div>  \
+                                            </div>   ';
+
+        var item = $(commentItem);
+        item.hide();
+        parent.prepend(item);
+
+        item.show('normal');
+    }
+
+
+    $("#ipt").click(function () {
+        var c = {};
+        c.userName = "lakdfjl";
+        c.content = $("#text").val();
+        showComment(c, $('#comment'));
+        $('#text').val("");
+    });
+});
