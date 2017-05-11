@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 import static com.sqr.tt.Commons.FAILURE;
 import static com.sqr.tt.Commons.SUCCESS;
 
@@ -31,6 +33,10 @@ public class CourseController {
     @ResponseBody
     public Response<Iterable<CourseEntity>> getAllCourses() {
         Iterable<CourseEntity> all = mCourseRepository.findAll();
+
+        ArrayList<CourseEntity> ces = new ArrayList<>();
+
+        System.out.println(all);
         return Response.noNUllResponse(all, "can not load courses");
     }
 

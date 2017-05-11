@@ -3,7 +3,7 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 07/05/2017.
+ * Created by rqg on 5/11/17.
  */
 @Entity
 @Table(name = "user", schema = "teach", catalog = "")
@@ -87,6 +87,16 @@ public class UserEntity {
         mToken = token;
     }
 
+    @Basic
+    @Column(name = "remaining")
+    public Integer getRemaining() {
+        return mRemaining;
+    }
+
+    public void setRemaining(Integer remaining) {
+        mRemaining = remaining;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,7 +110,10 @@ public class UserEntity {
         if (mNickName != null ? !mNickName.equals(that.mNickName) : that.mNickName != null) return false;
         if (mProtrait != null ? !mProtrait.equals(that.mProtrait) : that.mProtrait != null) return false;
         if (mPhone != null ? !mPhone.equals(that.mPhone) : that.mPhone != null) return false;
-        return mToken != null ? mToken.equals(that.mToken) : that.mToken == null;
+        if (mToken != null ? !mToken.equals(that.mToken) : that.mToken != null) return false;
+        if (mRemaining != null ? !mRemaining.equals(that.mRemaining) : that.mRemaining != null) return false;
+
+        return true;
     }
 
     @Override
@@ -112,16 +125,7 @@ public class UserEntity {
         result = 31 * result + (mProtrait != null ? mProtrait.hashCode() : 0);
         result = 31 * result + (mPhone != null ? mPhone.hashCode() : 0);
         result = 31 * result + (mToken != null ? mToken.hashCode() : 0);
+        result = 31 * result + (mRemaining != null ? mRemaining.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "remaining")
-    public Integer getRemaining() {
-        return mRemaining;
-    }
-
-    public void setRemaining(Integer remaining) {
-        mRemaining = remaining;
     }
 }

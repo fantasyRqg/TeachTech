@@ -3,7 +3,7 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by rqg on 5/11/17.
  */
 @Entity
 @Table(name = "teacher", schema = "teach", catalog = "")
@@ -100,7 +100,9 @@ public class TeacherEntity {
         if (mTeachStart != null ? !mTeachStart.equals(that.mTeachStart) : that.mTeachStart != null) return false;
         if (mIntroduction != null ? !mIntroduction.equals(that.mIntroduction) : that.mIntroduction != null)
             return false;
-        return mPhoto != null ? mPhoto.equals(that.mPhoto) : that.mPhoto == null;
+        if (mPhoto != null ? !mPhoto.equals(that.mPhoto) : that.mPhoto != null) return false;
+
+        return true;
     }
 
     @Override
