@@ -8,11 +8,14 @@ $(document).ready(function () {
         var name = course.name;
         var price = course.price;
         var img = course.image;
+        var courseId = course.id;
 
         var html = '<li class="uc-course-list_itm f-ib"> \
                         <div class="uc-coursecard uc-ykt-coursecard f-fl"> \
                         <a target="_blank" class="j-href" \
-                    href="http://study.163.com/course/introduction/1003164006.htm"> \
+                    href="classroom.html?id=' +
+            courseId
+            + '"> \
                         <div class="uc-ykt-coursecard-wrap f-cb f-pr"> \
                         <div class="uc-ykt-coursecard-wrap_box"> \
                         <div class="uc-ykt-coursecard-wrap_picbox f-pr"> \
@@ -27,7 +30,7 @@ $(document).ready(function () {
             + '</h3> \
                     </div> \
                     <div class="uc-ykt-coursecard-wrap_orgName f-fs0 f-thide"> \
-                        InsideRIA \
+                         \
                         </div> \
                         <div class="uc-ykt-coursecard-wrap_scorewrap f-thide f-cb f-pa"> \
                         <div class="m-scorecnt f-fl f-cb"> \
@@ -39,12 +42,16 @@ $(document).ready(function () {
                         <span class="m-star z-on"></span> \
                         <span class="m-star z-on"></span> \
                         </div> \
-                        <span class="uc-starrating_score">4.8</span> \
+                        <span class="uc-starrating_score">' +
+            (Math.random() + 4).toFixed(1)
+            + '</span> \
                         </div> \
                         </div> \
                         <div class="m-hot f-fl"> \
                         <!--Regular if11--> \
-                    (651人学过) \
+                    (' +
+            Math.floor(Math.random() * 1000)
+            + '人学过) \
                     </div> \
                     </div> \
                     <div class="uc-ykt-coursecard-wrap_price f-pa"> \
@@ -52,7 +59,9 @@ $(document).ready(function () {
                     <span class="u-discount">¥ ' +
             price
             + '</span> \
-                    <span class="u-normal z-discount">¥ 498.00</span> \
+                    <span class="u-normal z-discount">¥ ' +
+            Math.floor(price * 1.2)
+            + '</span> \
                     </div> \
                     </div> \
                     </div> \

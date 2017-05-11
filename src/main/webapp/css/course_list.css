@@ -541,6 +541,7 @@ a.f-fcgreen:hover, a.f-fcg:hover {
     display: inline-block;
     zoom: 1;
     *display: inline;
+    margin-top: 5px;
 }
 
 .f-dn {
