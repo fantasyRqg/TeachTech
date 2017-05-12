@@ -5,9 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/ketang.css"/>
+    <link rel="stylesheet" type="text/css" href="css/comment-1.css"/>
+    <link rel="stylesheet" type="text/css" href="css/comment-2.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/classroom.js"></script>
+
 </head>
-<body>
-<body id="find" class="m-categoryIndex auto-1494418196709-parent" style="padding-top: 60px;">
+<body id="find" class="m-categoryIndex auto-1494418196709-parent">
 
 <div class="header">
     <div class="header_top">
@@ -35,8 +39,8 @@
 
 <div class="main">
     <span>你想对楼主说点什么</span>
-    <span class="tag">你最多可以输入30个字符</span>
-    <textarea id="text" cols="30" rows="10" maxlength="30" class="text"></textarea><br>
+    <span class="tag">你最多可以输入300个字符</span>
+    <textarea id="text" maxlength="300" class="text"></textarea><br>
     <input type="button" value="发 表" id="ipt">
     <div id="txt">
 
@@ -44,6 +48,15 @@
     </div>
 </div>
 
+<div class="discussion-timeline js-quote-selection-container " style="margin: 0 auto;position: relative;">
+
+    <div id="comment" class="js-discussion js-socket-channel" data-channel="marked-as-read:issue:227924972">
+
+
+    </div>
+
+
+</div>
 
 </body>
 </html>

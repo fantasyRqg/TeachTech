@@ -68,6 +68,7 @@ body, .a, .a .header, .a .header_top {
 
 .header_top .header_top_content a {
     float: right;
+    margin-right: 10px;
 }
 
 .header_top .header_top_content .span2 {
@@ -76,9 +77,9 @@ body, .a, .a .header, .a .header_top {
 }
 
 .header_top .header_top_content a img {
-    position: absolute;
-    top: 13px;
-    left: 1200px;
+    position: relative;
+    top: 12px;
+    right: 10px;
 }
 
 .header_top .header_top_content a .span3 {
@@ -107,6 +108,7 @@ body, .a, .a .header, .a .header_top {
 
 .header_bottom .header_bottom_content .nav ul {
     float: right;
+    margin-right: 5%;
 }
 
 .header_bottom .header_bottom_content .nav ul li {
@@ -162,7 +164,6 @@ body, .a, .a .header, .a .header_top {
 }
 
 .header_bottom .header_bottom_content .nav ul {
-    padding-right: 150px;
 }
 
 .header_bottom .header_bottom_content .nav ul li a:hover {

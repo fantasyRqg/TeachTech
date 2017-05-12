@@ -44,8 +44,7 @@ public class Response<T> {
         }
         response.setStatus(SUCCESS);
         response.setMessage(SUCCESS);
-        response.setData(a);
-
+response.setData(a);
         return response;
     }
 }

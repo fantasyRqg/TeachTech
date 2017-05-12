@@ -133,6 +133,7 @@ body, .header .header_top {
 .main {
     width: 800px;
     margin: 20px auto;
+    padding-left: 30px;
 }
 
 span {
@@ -146,6 +147,7 @@ span {
 }
 
 .tag {
+    float: right;
     font-size: 13px;
     margin-left: 370px;
     vertical-align: bottom;
@@ -162,6 +164,8 @@ span {
 }
 
 input {
+    position: relative;
+    left: 670px;
     display: inline-block;
     width: 80px;
     height: 50px;
