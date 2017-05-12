@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by rqg on 5/11/17.
  */
 @Entity
 @Table(name = "comment", schema = "teach", catalog = "")
@@ -76,7 +76,9 @@ public class CommentEntity {
         if (mUserId != that.mUserId) return false;
         if (mCourseId != that.mCourseId) return false;
         if (mContent != null ? !mContent.equals(that.mContent) : that.mContent != null) return false;
-        return mTiemstamp != null ? mTiemstamp.equals(that.mTiemstamp) : that.mTiemstamp == null;
+        if (mTiemstamp != null ? !mTiemstamp.equals(that.mTiemstamp) : that.mTiemstamp != null) return false;
+
+        return true;
     }
 
     @Override

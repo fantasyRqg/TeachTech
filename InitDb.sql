@@ -35,7 +35,7 @@ CREATE TABLE teach.course (
   id           INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name         NVARCHAR(40)             NOT NULL COMMENT '课程名称',
   introdcution NVARCHAR(100) COMMENT '课程描述',
-  teacher_id   INT UNSIGNED             NOT NULL COMMENT '教师id',
+  teacher_id    INT UNSIGNED             NOT NULL COMMENT '教师id',
   video        VARCHAR(30)              NOT NULL COMMENT '课程视频文件',
   price        DECIMAL                  NOT NULL,
   image        VARCHAR(30)              NOT NULL

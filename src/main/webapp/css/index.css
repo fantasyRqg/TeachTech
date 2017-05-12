@@ -103,6 +103,7 @@ body, .a, .a .header, .a .header_top {
 .header_bottom .header_bottom_content .logo img {
     float: left;
     padding-top: 7px;
+    margin-left: 15px;
 }
 
 .header_bottom .header_bottom_content .nav ul {
@@ -140,13 +141,14 @@ body, .a, .a .header, .a .header_top {
     background-color: #ec8282;
     outline: none;
     padding-left: 12px;
+    margin-right: 40px;
 }
 
 .header_bottom .header_bottom_content .search img {
+    position: relative;
     float: right;
-    position: absolute;
-    top: 21px;
-    left: 1170px;
+    top: 20px;
+    right: 15px;
 }
 
 .header_bottom .header_bottom_content .nav ul li a {

@@ -3,7 +3,7 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by rqg on 5/11/17.
  */
 @Entity
 @Table(name = "join_course_user", schema = "teach", catalog = "")
@@ -51,7 +51,9 @@ public class JoinCourseUserEntity {
 
         if (mId != that.mId) return false;
         if (mUserId != that.mUserId) return false;
-        return mCourseId == that.mCourseId;
+        if (mCourseId != that.mCourseId) return false;
+
+        return true;
     }
 
     @Override

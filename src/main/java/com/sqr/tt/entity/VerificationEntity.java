@@ -3,7 +3,7 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by rqg on 5/11/17.
  */
 @Entity
 @Table(name = "verification", schema = "teach", catalog = "")
@@ -51,7 +51,9 @@ public class VerificationEntity {
 
         if (mId != that.mId) return false;
         if (mCode != null ? !mCode.equals(that.mCode) : that.mCode != null) return false;
-        return mPicture != null ? mPicture.equals(that.mPicture) : that.mPicture == null;
+        if (mPicture != null ? !mPicture.equals(that.mPicture) : that.mPicture != null) return false;
+
+        return true;
     }
 
     @Override
