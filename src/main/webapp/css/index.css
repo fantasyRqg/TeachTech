@@ -107,12 +107,13 @@ body, .a, .a .header, .a .header_top {
 }
 
 .header_bottom .header_bottom_content .nav ul {
-    float: right;
-    margin-right: 5%;
+    /*float: right;*/
+    /*margin-right: 5%;*/
+    display: inline;
 }
 
 .header_bottom .header_bottom_content .nav ul li {
-    float: right;
+    /*float: right;*/
 }
 
 .header_bottom .header_bottom_content .search input::-webkit-input-placeholder {
@@ -160,7 +161,10 @@ body, .a, .a .header, .a .header_top {
 }
 
 .header_bottom .header_bottom_content .nav ul li {
-    padding-left: 75px;
+    /*padding-left: 75px;*/
+    padding-left: 3%;
+    padding-right: 3%;
+    display: inline;
 }
 
 .header_bottom .header_bottom_content .nav ul {
