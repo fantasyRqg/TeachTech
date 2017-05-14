@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by rqg on 09/05/2017.
  */
 public interface CommentRepo extends CrudRepository<CommentEntity, Long> {
-    Iterable<CommentEntity> findAllByCourseId(int courseId);
+    Iterable<CommentEntity> findAllByCourseId(long courseId);
 }

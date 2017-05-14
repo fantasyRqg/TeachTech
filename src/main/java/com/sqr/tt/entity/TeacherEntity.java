@@ -3,12 +3,12 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 5/11/17.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "teacher", schema = "teach", catalog = "")
 public class TeacherEntity {
-    private int mId;
+    private long mId;
     private String mName;
     private String mSubject;
     private String mGraduate;
@@ -18,11 +18,11 @@ public class TeacherEntity {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
@@ -100,14 +100,12 @@ public class TeacherEntity {
         if (mTeachStart != null ? !mTeachStart.equals(that.mTeachStart) : that.mTeachStart != null) return false;
         if (mIntroduction != null ? !mIntroduction.equals(that.mIntroduction) : that.mIntroduction != null)
             return false;
-        if (mPhoto != null ? !mPhoto.equals(that.mPhoto) : that.mPhoto != null) return false;
-
-        return true;
+        return mPhoto != null ? mPhoto.equals(that.mPhoto) : that.mPhoto == null;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
+        int result = (int) (mId ^ (mId >>> 32));
         result = 31 * result + (mName != null ? mName.hashCode() : 0);
         result = 31 * result + (mSubject != null ? mSubject.hashCode() : 0);
         result = 31 * result + (mGraduate != null ? mGraduate.hashCode() : 0);

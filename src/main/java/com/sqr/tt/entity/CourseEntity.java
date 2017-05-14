@@ -3,26 +3,26 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "course", schema = "teach", catalog = "")
 public class CourseEntity {
-    private int mId;
+    private long mId;
     private String mName;
     private String mIntrodcution;
-    private int mTeacherId;
+    private long mTeacherId;
     private String mVideo;
     private int mPrice;
     private String mImage;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
@@ -48,11 +48,11 @@ public class CourseEntity {
 
     @Basic
     @Column(name = "teacher_id")
-    public int getTeacherId() {
+    public long getTeacherId() {
         return mTeacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(long teacherId) {
         mTeacherId = teacherId;
     }
 
@@ -76,6 +76,16 @@ public class CourseEntity {
         mPrice = price;
     }
 
+    @Basic
+    @Column(name = "image")
+    public String getImage() {
+        return mImage;
+    }
+
+    public void setImage(String image) {
+        mImage = image;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,27 +99,19 @@ public class CourseEntity {
         if (mName != null ? !mName.equals(that.mName) : that.mName != null) return false;
         if (mIntrodcution != null ? !mIntrodcution.equals(that.mIntrodcution) : that.mIntrodcution != null)
             return false;
-        return mVideo != null ? mVideo.equals(that.mVideo) : that.mVideo == null;
+        if (mVideo != null ? !mVideo.equals(that.mVideo) : that.mVideo != null) return false;
+        return mImage != null ? mImage.equals(that.mImage) : that.mImage == null;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
+        int result = (int) (mId ^ (mId >>> 32));
         result = 31 * result + (mName != null ? mName.hashCode() : 0);
         result = 31 * result + (mIntrodcution != null ? mIntrodcution.hashCode() : 0);
-        result = 31 * result + mTeacherId;
+        result = 31 * result + (int) (mTeacherId ^ (mTeacherId >>> 32));
         result = 31 * result + (mVideo != null ? mVideo.hashCode() : 0);
         result = 31 * result + mPrice;
+        result = 31 * result + (mImage != null ? mImage.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "image")
-    public String getImage() {
-        return mImage;
-    }
-
-    public void setImage(String image) {
-        mImage = image;
     }
 }

@@ -3,12 +3,12 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 5/11/17.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "user", schema = "teach", catalog = "")
 public class UserEntity {
-    private int mId;
+    private long mId;
     private String mLoginName;
     private String mPassword;
     private String mNickName;
@@ -19,11 +19,11 @@ public class UserEntity {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
@@ -111,14 +111,12 @@ public class UserEntity {
         if (mProtrait != null ? !mProtrait.equals(that.mProtrait) : that.mProtrait != null) return false;
         if (mPhone != null ? !mPhone.equals(that.mPhone) : that.mPhone != null) return false;
         if (mToken != null ? !mToken.equals(that.mToken) : that.mToken != null) return false;
-        if (mRemaining != null ? !mRemaining.equals(that.mRemaining) : that.mRemaining != null) return false;
-
-        return true;
+        return mRemaining != null ? mRemaining.equals(that.mRemaining) : that.mRemaining == null;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
+        int result = (int) (mId ^ (mId >>> 32));
         result = 31 * result + (mLoginName != null ? mLoginName.hashCode() : 0);
         result = 31 * result + (mPassword != null ? mPassword.hashCode() : 0);
         result = 31 * result + (mNickName != null ? mNickName.hashCode() : 0);

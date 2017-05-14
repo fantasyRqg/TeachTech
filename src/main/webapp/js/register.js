@@ -70,6 +70,9 @@ $(document).ready(function () {
                     localStorage.userNick = data.data.nickName;
                     localStorage.userToken = data.data.token;
                     localStorage.userName = data.data.loginName;
+                    localStorage.userId = data.data.id;
+                    localStorage.userImg = data.data.protrait;
+
                     window.location.href = "index.html";
                 })
                 .fail(function (data) {

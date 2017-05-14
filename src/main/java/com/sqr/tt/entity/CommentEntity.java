@@ -4,44 +4,44 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by rqg on 5/11/17.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "comment", schema = "teach", catalog = "")
 public class CommentEntity {
-    private int mId;
-    private int mUserId;
-    private int mCourseId;
+    private long mId;
+    private long mUserId;
+    private long mCourseId;
     private String mContent;
     private Timestamp mTiemstamp;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
     @Basic
     @Column(name = "user_id")
-    public int getUserId() {
+    public long getUserId() {
         return mUserId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         mUserId = userId;
     }
 
     @Basic
     @Column(name = "course_id")
-    public int getCourseId() {
+    public long getCourseId() {
         return mCourseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(long courseId) {
         mCourseId = courseId;
     }
 
@@ -76,16 +76,14 @@ public class CommentEntity {
         if (mUserId != that.mUserId) return false;
         if (mCourseId != that.mCourseId) return false;
         if (mContent != null ? !mContent.equals(that.mContent) : that.mContent != null) return false;
-        if (mTiemstamp != null ? !mTiemstamp.equals(that.mTiemstamp) : that.mTiemstamp != null) return false;
-
-        return true;
+        return mTiemstamp != null ? mTiemstamp.equals(that.mTiemstamp) : that.mTiemstamp == null;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
-        result = 31 * result + mUserId;
-        result = 31 * result + mCourseId;
+        int result = (int) (mId ^ (mId >>> 32));
+        result = 31 * result + (int) (mUserId ^ (mUserId >>> 32));
+        result = 31 * result + (int) (mCourseId ^ (mCourseId >>> 32));
         result = 31 * result + (mContent != null ? mContent.hashCode() : 0);
         result = 31 * result + (mTiemstamp != null ? mTiemstamp.hashCode() : 0);
         return result;

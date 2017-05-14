@@ -3,22 +3,22 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 5/11/17.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "verification", schema = "teach", catalog = "")
 public class VerificationEntity {
-    private int mId;
+    private long mId;
     private String mCode;
     private String mPicture;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
@@ -51,14 +51,12 @@ public class VerificationEntity {
 
         if (mId != that.mId) return false;
         if (mCode != null ? !mCode.equals(that.mCode) : that.mCode != null) return false;
-        if (mPicture != null ? !mPicture.equals(that.mPicture) : that.mPicture != null) return false;
-
-        return true;
+        return mPicture != null ? mPicture.equals(that.mPicture) : that.mPicture == null;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
+        int result = (int) (mId ^ (mId >>> 32));
         result = 31 * result + (mCode != null ? mCode.hashCode() : 0);
         result = 31 * result + (mPicture != null ? mPicture.hashCode() : 0);
         return result;

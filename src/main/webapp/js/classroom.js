@@ -65,10 +65,73 @@ $(document).ready(function () {
 
 
     $("#ipt").click(function () {
+        if (!localStorage.userId) {
+            alert("请先登陆");
+            return;
+        }
+
+
         var c = {};
-        c.userName = "lakdfjl";
+        c.userName = localStorage.userName;
         c.content = $("#text").val();
-        showComment(c, $('#comment'));
-        $('#text').val("");
+        c.createTime = new Date().getMilliseconds();
+        c.userId = localStorage.userId;
+        c.courseId = classId;
+        c.token = localStorage.userToken;
+
+        if (!c.content || c.content.trim() === "") {
+            return;
+        }
+
+
+        $.post("comment/add", {
+            userId: c.userId,
+            token: c.token,
+            courseId: c.courseId,
+            comment: c.content
+        }, function (data) {
+            if (data.status === "success") {
+                showComment(c, $('#comment'));
+                $('#text').val("");
+            }
+        })
     });
+
+    $("#buy").click(function () {
+        if (!localStorage.userId) {
+            alert("请先登陆");
+
+        }
+
+    });
+
+
+    $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    };
+
+
+    classId = $.urlParam("id");
+
+
+    $.getJSON("course/info", {
+            id: classId
+        },
+        function (data) {
+            $("#class_name").text(data.data.name);
+        });
+
+    $.getJSON("comment/course", {
+        courseId: classId
+    }, function (data) {
+        if (data.status === "success") {
+            var commentList = data.data;
+            var cl = $('#comment');
+            for (var i = 0; i < commentList.length; i++) {
+                showComment(commentList[i], cl);
+            }
+        }
+    })
+
 });

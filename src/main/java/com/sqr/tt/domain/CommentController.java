@@ -68,7 +68,7 @@ public class CommentController {
     @GetMapping(path = "course")
     @ResponseBody
     public Response<Iterable<CommentEntity>> getCommentsByCourse(@RequestParam long courseId) {
-        Iterable<CommentEntity> all = mCommentRepo.findAllByCourseId((int) courseId);
+        Iterable<CommentEntity> all = mCommentRepo.findAllByCourseId(courseId);
 
 
         return Response.noNUllResponse(all, "not comment");

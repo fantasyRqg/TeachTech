@@ -3,42 +3,42 @@ package com.sqr.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by rqg on 5/11/17.
+ * Created by rqg on 14/05/2017.
  */
 @Entity
 @Table(name = "join_course_user", schema = "teach", catalog = "")
 public class JoinCourseUserEntity {
-    private int mId;
-    private int mUserId;
-    private int mCourseId;
+    private long mId;
+    private long mUserId;
+    private long mCourseId;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         mId = id;
     }
 
     @Basic
     @Column(name = "user_id")
-    public int getUserId() {
+    public long getUserId() {
         return mUserId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         mUserId = userId;
     }
 
     @Basic
     @Column(name = "course_id")
-    public int getCourseId() {
+    public long getCourseId() {
         return mCourseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(long courseId) {
         mCourseId = courseId;
     }
 
@@ -51,16 +51,14 @@ public class JoinCourseUserEntity {
 
         if (mId != that.mId) return false;
         if (mUserId != that.mUserId) return false;
-        if (mCourseId != that.mCourseId) return false;
-
-        return true;
+        return mCourseId == that.mCourseId;
     }
 
     @Override
     public int hashCode() {
-        int result = mId;
-        result = 31 * result + mUserId;
-        result = 31 * result + mCourseId;
+        int result = (int) (mId ^ (mId >>> 32));
+        result = 31 * result + (int) (mUserId ^ (mUserId >>> 32));
+        result = 31 * result + (int) (mCourseId ^ (mCourseId >>> 32));
         return result;
     }
 }
