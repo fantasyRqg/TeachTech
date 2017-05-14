@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface JoinCourseUserRepo extends CrudRepository<JoinCourseUserEntity, Long> {
     Iterable<JoinCourseUserEntity> findAllByUserId(int userId);
+
+    JoinCourseUserEntity findByCourseIdAndUserId(long courseId, long userId);
 }

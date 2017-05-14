@@ -103,6 +103,23 @@ $(document).ready(function () {
 
         }
 
+        $.post("course/buy", {
+            courseId: classId,
+            userId: localStorage.userId,
+            token: localStorage.userToken
+        })
+            .success(function (data) {
+                if (data.status === "success") {
+                    // alert("购买成功");
+                    $("#buy").hide("normal");
+                } else {
+                    alert("购买失败");
+                }
+            })
+            .fail(function () {
+                alert("购买失败");
+            });
+
     });
 
 
@@ -132,6 +149,18 @@ $(document).ready(function () {
                 showComment(commentList[i], cl);
             }
         }
-    })
+    });
 
+
+    if (localStorage.userId) {
+        $.getJSON("course/hasbuy", {
+                userId: localStorage.userId,
+                courseId: classId
+            },
+            function (data) {
+                if (data.data === true) {
+                    $("#buy").hide();
+                }
+            });
+    }
 });

@@ -58,7 +58,17 @@ public class CourseController {
     }
 
 
-    @GetMapping(path = "buy")
+    @GetMapping(path = "hasbuy")
+    @ResponseBody
+    public Response<Boolean> userHasByCourse(@RequestParam long userId, @RequestParam long courseId) {
+        JoinCourseUserEntity join = mJoinCourseUserRepo.findByCourseIdAndUserId(courseId, userId);
+
+        return Response.noNUllResponse(join != null, "");
+    }
+
+
+    @PostMapping(path = "buy")
+    @ResponseBody
     public Response<String> buyCourse(@RequestParam long courseId, @RequestParam long userId, @RequestParam String token) {
         CourseEntity course = mCourseRepository.findOne(courseId);
         Response<String> response = new Response<>();
