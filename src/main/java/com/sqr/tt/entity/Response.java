@@ -4,7 +4,7 @@ import static com.sqr.tt.Commons.FAILURE;
 import static com.sqr.tt.Commons.SUCCESS;
 
 /**
- * Created by rqg on 07/05/2017.
+ * Created by wyj on 07/05/2017.
  */
 public class Response<T> {
     private String status;

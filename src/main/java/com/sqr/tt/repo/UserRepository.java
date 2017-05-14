@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 
 /**
- * Created by rqg on 07/05/2017.
+ * Created by wyj on 07/05/2017.
  */
 @Transactional
 public interface UserRepository extends CrudRepository<UserEntity, Long> {

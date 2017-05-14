@@ -21,7 +21,7 @@ import static com.sqr.tt.Commons.FAILURE;
 import static com.sqr.tt.Commons.SUCCESS;
 
 /**
- * Created by rqg on 07/05/2017.
+ * Created by wyj on 07/05/2017.
  */
 
 @Controller
@@ -249,7 +249,7 @@ public class UserController {
         Iterable<JoinCourseUserEntity> allCourses = mJoinCourseUserRepo.findAllByUserId(id);
         List<Long> courseIds = new ArrayList<>();
         for (JoinCourseUserEntity jcue : allCourses) {
-            courseIds.add((long) jcue.getCourseId());
+            courseIds.add(jcue.getCourseId());
         }
 
         Iterable<CourseEntity> all = mCourseRepository.findAll(courseIds);

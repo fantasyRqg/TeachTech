@@ -1,7 +1,7 @@
 package com.sqr.tt;
 
 /**
- * Created by rqg on 07/05/2017.
+ * Created by wyj on 07/05/2017.
  */
 public class Commons {
 

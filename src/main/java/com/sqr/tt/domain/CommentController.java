@@ -17,7 +17,7 @@ import static com.sqr.tt.Commons.FAILURE;
 import static com.sqr.tt.Commons.SUCCESS;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by wyj on 09/05/2017.
  */
 @Controller
 @RequestMapping(path = "comment")

@@ -3,7 +3,7 @@ package com.sqr.tt.utils;
 import java.io.File;
 
 /**
- * Created by rqg on 09/05/2017.
+ * Created by wyj on 09/05/2017.
  */
 public class FileUtil {
 
