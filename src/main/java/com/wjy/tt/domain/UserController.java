@@ -1,13 +1,13 @@
-package com.sqr.tt.domain;
+package com.wjy.tt.domain;
 
-import com.sqr.tt.entity.CourseEntity;
-import com.sqr.tt.entity.JoinCourseUserEntity;
-import com.sqr.tt.entity.Response;
-import com.sqr.tt.entity.UserEntity;
-import com.sqr.tt.repo.CourseRepository;
-import com.sqr.tt.repo.JoinCourseUserRepo;
-import com.sqr.tt.repo.UserRepository;
-import com.sqr.tt.utils.FileUtil;
+import com.wjy.tt.entity.CourseEntity;
+import com.wjy.tt.entity.JoinCourseUserEntity;
+import com.wjy.tt.entity.Response;
+import com.wjy.tt.entity.UserEntity;
+import com.wjy.tt.repo.CourseRepository;
+import com.wjy.tt.repo.JoinCourseUserRepo;
+import com.wjy.tt.repo.UserRepository;
+import com.wjy.tt.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import static com.sqr.tt.Commons.FAILURE;
-import static com.sqr.tt.Commons.SUCCESS;
+import static com.wjy.tt.Commons.FAILURE;
+import static com.wjy.tt.Commons.SUCCESS;
 
 /**
- * Created by wyj on 07/05/2017.
+ * Created by wjy on 07/05/2017.
  */
 
 @Controller

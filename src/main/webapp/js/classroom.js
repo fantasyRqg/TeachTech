@@ -1,5 +1,5 @@
 /**
- * Created by wyj on 11/05/2017.
+ * Created by wjy on 11/05/2017.
  */
 $(document).ready(function () {
     function showComment(c, parent) {

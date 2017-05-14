@@ -1,10 +1,9 @@
-package com.sqr.tt.entity;
+package com.wjy.tt.entity;
 
-import static com.sqr.tt.Commons.FAILURE;
-import static com.sqr.tt.Commons.SUCCESS;
+import com.wjy.tt.Commons;
 
 /**
- * Created by wyj on 07/05/2017.
+ * Created by wjy on 07/05/2017.
  */
 public class Response<T> {
     private String status;
@@ -39,11 +38,11 @@ public class Response<T> {
         Response<T> response = new Response<>();
         if (a == null) {
             response.setMessage(errMsg);
-            response.setStatus(FAILURE);
+            response.setStatus(Commons.FAILURE);
             return response;
         }
-        response.setStatus(SUCCESS);
-        response.setMessage(SUCCESS);
+        response.setStatus(Commons.SUCCESS);
+        response.setMessage(Commons.SUCCESS);
 response.setData(a);
         return response;
     }

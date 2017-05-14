@@ -1,10 +1,10 @@
-package com.sqr.tt.repo;
+package com.wjy.tt.repo;
 
-import com.sqr.tt.entity.CommentEntity;
+import com.wjy.tt.entity.CommentEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by wyj on 09/05/2017.
+ * Created by wjy on 09/05/2017.
  */
 public interface CommentRepo extends CrudRepository<CommentEntity, Long> {
     Iterable<CommentEntity> findAllByCourseId(long courseId);

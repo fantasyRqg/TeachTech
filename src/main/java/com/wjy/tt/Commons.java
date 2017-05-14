@@ -1,7 +1,7 @@
-package com.sqr.tt;
+package com.wjy.tt;
 
 /**
- * Created by wyj on 07/05/2017.
+ * Created by wjy on 07/05/2017.
  */
 public class Commons {
 

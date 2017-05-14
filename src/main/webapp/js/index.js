@@ -1,5 +1,5 @@
 /**
- * Created by wyj on 07/05/2017.
+ * Created by wjy on 07/05/2017.
  */
 $(document).ready(function () {
     if (localStorage.userNick) {

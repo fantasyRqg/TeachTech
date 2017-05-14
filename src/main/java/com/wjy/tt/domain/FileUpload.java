@@ -1,6 +1,6 @@
-package com.sqr.tt.domain;
+package com.wjy.tt.domain;
 
-import com.sqr.tt.entity.Response;
+import com.wjy.tt.entity.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,11 +14,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.sqr.tt.Commons.FAILURE;
-import static com.sqr.tt.Commons.SUCCESS;
+import static com.wjy.tt.Commons.FAILURE;
+import static com.wjy.tt.Commons.SUCCESS;
 
 /**
- * Created by wyj on 09/05/2017.
+ * Created by wjy on 09/05/2017.
  */
 @Controller
 public class FileUpload {

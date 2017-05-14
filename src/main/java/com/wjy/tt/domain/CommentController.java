@@ -1,23 +1,23 @@
-package com.sqr.tt.domain;
+package com.wjy.tt.domain;
 
-import com.sqr.tt.entity.CommentEntity;
-import com.sqr.tt.entity.CourseEntity;
-import com.sqr.tt.entity.Response;
-import com.sqr.tt.entity.UserEntity;
-import com.sqr.tt.repo.CommentRepo;
-import com.sqr.tt.repo.CourseRepository;
-import com.sqr.tt.repo.UserRepository;
+import com.wjy.tt.entity.CommentEntity;
+import com.wjy.tt.entity.CourseEntity;
+import com.wjy.tt.entity.Response;
+import com.wjy.tt.entity.UserEntity;
+import com.wjy.tt.repo.CommentRepo;
+import com.wjy.tt.repo.CourseRepository;
+import com.wjy.tt.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 
-import static com.sqr.tt.Commons.FAILURE;
-import static com.sqr.tt.Commons.SUCCESS;
+import static com.wjy.tt.Commons.FAILURE;
+import static com.wjy.tt.Commons.SUCCESS;
 
 /**
- * Created by wyj on 09/05/2017.
+ * Created by wjy on 09/05/2017.
  */
 @Controller
 @RequestMapping(path = "comment")

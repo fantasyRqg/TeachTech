@@ -1,9 +1,9 @@
-package com.sqr.tt.utils;
+package com.wjy.tt.utils;
 
 import java.io.File;
 
 /**
- * Created by wyj on 09/05/2017.
+ * Created by wjy on 09/05/2017.
  */
 public class FileUtil {
 

@@ -1,4 +1,4 @@
-package com.sqr.tt.domain;
+package com.wjy.tt.domain;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,10 +1,10 @@
-package com.sqr.tt.entity;
+package com.wjy.tt.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by wyj on 14/05/2017.
+ * Created by wjy on 14/05/2017.
  */
 @Entity
 @Table(name = "comment", schema = "teach", catalog = "")

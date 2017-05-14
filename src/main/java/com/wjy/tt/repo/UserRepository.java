@@ -1,12 +1,12 @@
-package com.sqr.tt.repo;
+package com.wjy.tt.repo;
 
-import com.sqr.tt.entity.UserEntity;
+import com.wjy.tt.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
 /**
- * Created by wyj on 07/05/2017.
+ * Created by wjy on 07/05/2017.
  */
 @Transactional
 public interface UserRepository extends CrudRepository<UserEntity, Long> {

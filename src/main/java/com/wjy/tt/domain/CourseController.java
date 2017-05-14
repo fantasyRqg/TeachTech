@@ -1,21 +1,21 @@
-package com.sqr.tt.domain;
+package com.wjy.tt.domain;
 
-import com.sqr.tt.entity.*;
-import com.sqr.tt.repo.CourseRepository;
-import com.sqr.tt.repo.JoinCourseUserRepo;
-import com.sqr.tt.repo.TeacherRepo;
-import com.sqr.tt.repo.UserRepository;
+import com.wjy.tt.entity.*;
+import com.wjy.tt.repo.CourseRepository;
+import com.wjy.tt.repo.JoinCourseUserRepo;
+import com.wjy.tt.repo.TeacherRepo;
+import com.wjy.tt.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-import static com.sqr.tt.Commons.FAILURE;
-import static com.sqr.tt.Commons.SUCCESS;
+import static com.wjy.tt.Commons.FAILURE;
+import static com.wjy.tt.Commons.SUCCESS;
 
 /**
- * Created by wyj on 09/05/2017.
+ * Created by wjy on 09/05/2017.
  */
 @Controller
 @RequestMapping(path = "course")
