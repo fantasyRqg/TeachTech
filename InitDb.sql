@@ -54,7 +54,7 @@ CREATE TABLE teach.comment
   user_id   BIGINT UNSIGNED              NOT NULL,
   course_id BIGINT UNSIGNED              NOT NULL,
   content   NVARCHAR(100),
-  tiemstamp TIMESTAMP                    NOT NULL
+  tiemstamp TIMESTAMP(6)                 NOT NULL
 );
 
 

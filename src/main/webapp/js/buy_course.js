@@ -42,5 +42,7 @@ $(document).ready(function () {
             $("#class_name").val(data.data.name);
 
             $("#class_img").attr("src", data.data.image);
+            $('#price').val(data.data.price)
+
         });
 });
