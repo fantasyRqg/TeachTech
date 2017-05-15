@@ -1,0 +1,191 @@
+@charset "utf-8";
+/** public **/
+/*.clear{clear:both;}*/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    content: '.';
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+/** layout**/
+body, .header .header_top {
+    margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+/*for header*/
+.header {
+    width: 100%
+}
+
+.header .header_top {
+    width: 1280px
+}
+
+.header .header_top ul {
+    margin-top: 24px;
+    height: 56px;
+    line-height: 56px;
+}
+
+.header .header_top ul li {
+    float: left;
+    height: 56px;
+}
+
+.header .header_top ul .li1 a {
+    width: 95px;
+    background-image: url("../img/logo1.png");
+    height: 56px;
+    margin-left: 40px;
+    display: block
+}
+
+.header .header_top ul .li2 {
+    border: 1px solid #bdbdbd;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.header .header_top ul .li3 {
+    font-family: "微软雅黑";
+    font-size: 24px;
+    color: #1a1a1a;
+    margin-top: 16px;
+    margin-left: 20px;
+}
+
+.header .header_top ul .li4 {
+    font-family: "微软雅黑";
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-top: 22px;
+    margin-left: 699px;
+}
+
+.header .header_top ul .li5 input {
+    background: url("../img/denglu.png") no-repeat;
+    width: 66px;
+    height: 32px;
+    margin-top: 28px;
+    margin-left: 10px;
+    float: right;
+    margin-right: 40px;
+    border: none
+}
+
+.header .header_top .nav {
+    width: 1280px;
+    margin: 0 auto;
+    border: 1px solid #bdbdbd;
+    margin-top: 20px;
+}
+
+/*for content*/
+
+.content {
+    width: 100%;
+}
+
+.content {
+    width: 571px;
+    margin: 60px auto 0;
+}
+
+.content .box {
+    width: 571px;
+    height: 40px;
+    margin-bottom: 24px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.title {
+    width: 70px;
+    text-align: right;
+    line-height: 28px;
+    float: left;
+    margin-right: 10px;
+    color: #666666;
+    font-size: 14px;
+}
+
+.all {
+    display: block;
+    width: 338px;
+    height: 28px;
+    border: 1px #dedede solid;
+    padding-left: 10px;
+    color: #999999;
+}
+
+.photo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border: 1px #dedede solid;
+    padding-left: 10px;
+    margin-left: 80px;
+}
+
+.photo_title {
+    width: 70px;
+    text-align: right;
+    line-height: 20px;
+    float: left;
+    margin-right: 10px;
+    color: #666666;
+    font-size: 14px;
+}
+
+.photo_box {
+    margin-bottom: 24px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.file {
+    display: block;
+    width: 240px;
+    height: 20px;
+    padding-left: 100px;
+    margin-left: 150px;
+}
+
+.money_left {
+    display: block;
+    width: 108px;
+    height: 28px;
+    border: 1px #dedede solid;
+    padding-left: 10px;
+    color: #999999;
+    float: left;
+}
+
+.money_right {
+    display: block;
+    width: 66px;
+    height: 32px;
+    float: right;
+    background: url("../img/denglu.png") no-repeat;
+    border: none;
+    margin-right: 150px;
+}

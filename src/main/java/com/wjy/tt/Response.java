@@ -1,6 +1,4 @@
-package com.wjy.tt.entity;
-
-import com.wjy.tt.Commons;
+package com.wjy.tt;
 
 /**
  * Created by wjy on 07/05/2017.

@@ -1,6 +1,10 @@
 package com.wjy.tt.domain;
 
-import com.wjy.tt.entity.*;
+import com.wjy.tt.Response;
+import com.wjy.tt.entity.CourseEntity;
+import com.wjy.tt.entity.JoinCourseUserEntity;
+import com.wjy.tt.entity.TeacherEntity;
+import com.wjy.tt.entity.UserEntity;
 import com.wjy.tt.repo.CourseRepository;
 import com.wjy.tt.repo.JoinCourseUserRepo;
 import com.wjy.tt.repo.TeacherRepo;

@@ -1,8 +1,8 @@
 package com.wjy.tt.domain;
 
+import com.wjy.tt.Response;
 import com.wjy.tt.entity.CommentEntity;
 import com.wjy.tt.entity.CourseEntity;
-import com.wjy.tt.entity.Response;
 import com.wjy.tt.entity.UserEntity;
 import com.wjy.tt.repo.CommentRepo;
 import com.wjy.tt.repo.CourseRepository;

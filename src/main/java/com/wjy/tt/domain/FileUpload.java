@@ -1,6 +1,6 @@
 package com.wjy.tt.domain;
 
-import com.wjy.tt.entity.Response;
+import com.wjy.tt.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
