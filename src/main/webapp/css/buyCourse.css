@@ -82,14 +82,12 @@ body, .header .header_top {
 }
 
 .header .header_top ul .li5 input {
-    background: url("../img/denglu.png") no-repeat;
     width: 66px;
     height: 32px;
     margin-top: 28px;
     margin-left: 10px;
     float: right;
     margin-right: 40px;
-    border: none
 }
 
 .header .header_top .nav {
@@ -113,17 +111,16 @@ body, .header .header_top {
     width: 232px;
     height: 124px;
     margin: 0 auto;
-    background: url("../img/c_image_1.jpg") no-repeat;
     margin-top: 50px;
 }
 
-.content .box {
-    width: 571px;
-    height: 40px;
-    margin-bottom: 24px;
-    position: relative;
-    margin-top: 10px;
-}
+/*.content .box {*/
+/*width: 571px;*/
+/*height: 40px;*/
+/*margin-bottom: 24px;*/
+/*position: relative;*/
+/*margin-top: 10px;*/
+/*}*/
 
 .title1 {
     width: 70px;

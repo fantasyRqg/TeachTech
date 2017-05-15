@@ -103,23 +103,7 @@ $(document).ready(function () {
 
         }
 
-        $.post("course/buy", {
-            courseId: classId,
-            userId: localStorage.userId,
-            token: localStorage.userToken
-        })
-            .success(function (data) {
-                if (data.status === "success") {
-                    // alert("购买成功");
-                    $("#buy").hide("normal");
-                } else {
-                    alert("购买失败");
-                }
-            })
-            .fail(function () {
-                alert("购买失败");
-            });
-
+        window.location.href = 'buyCourse.html?id=' + classId;
     });
 
 

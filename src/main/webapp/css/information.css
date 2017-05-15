@@ -81,16 +81,16 @@ body, .header .header_top {
     margin-left: 699px;
 }
 
-.header .header_top ul .li5 input {
-    background: url("../img/denglu.png") no-repeat;
-    width: 66px;
-    height: 32px;
-    margin-top: 28px;
-    margin-left: 10px;
-    float: right;
-    margin-right: 40px;
-    border: none
-}
+/*.header .header_top ul .li5 input {*/
+/*background: url("../img/denglu.png") no-repeat;*/
+/*width: 66px;*/
+/*height: 32px;*/
+/*margin-top: 28px;*/
+/*margin-left: 10px;*/
+/*float: right;*/
+/*margin-right: 40px;*/
+/*border: none*/
+/*}*/
 
 .header .header_top .nav {
     width: 1280px;
