@@ -43,6 +43,13 @@ $(document).ready(function () {
             return null;
         }
 
+
+        if (getChildrenInputVal("verify") !== $('#verify_img').attr('name')) {
+            showLoginError("验证码错误");
+
+            return null;
+        }
+
         return {
             loginName: getChildrenInputVal("username"),
             password: getChildrenInputVal("password"),
@@ -79,9 +86,27 @@ $(document).ready(function () {
                     console.log(data.status);
                     showLoginError(data.message);
                 });
-        } else {
-            showLoginError("信息不完整");
         }
     });
+
+    function getNewVerfication() {
+        $.getJSON('user/verify')
+            .success(function (data) {
+                if (data.status === 'success') {
+
+                    var vi = $('#verify_img');
+                    vi.attr("src", 'vcode/' + data.data.picture);
+                    vi.attr('name', data.data.code);
+                }
+
+            });
+    }
+
+
+    getNewVerfication();
+    $('#new_verify').click(function () {
+        getNewVerfication();
+
+    })
 
 });

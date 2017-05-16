@@ -1,12 +1,14 @@
 package com.wjy.tt.domain;
 
+import com.wjy.tt.Response;
 import com.wjy.tt.entity.CourseEntity;
 import com.wjy.tt.entity.JoinCourseUserEntity;
-import com.wjy.tt.entity.Response;
 import com.wjy.tt.entity.UserEntity;
+import com.wjy.tt.entity.VerificationEntity;
 import com.wjy.tt.repo.CourseRepository;
 import com.wjy.tt.repo.JoinCourseUserRepo;
 import com.wjy.tt.repo.UserRepository;
+import com.wjy.tt.repo.VerificationRepo;
 import com.wjy.tt.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,8 @@ public class UserController {
     private CourseRepository mCourseRepository;
     @Autowired
     private JoinCourseUserRepo mJoinCourseUserRepo;
+    @Autowired
+    private VerificationRepo mVerificationRepo;
 
 
     private static SecureRandom sRandom = new SecureRandom();
@@ -258,6 +262,27 @@ public class UserController {
         response.setData(all);
         response.setStatus(SUCCESS);
         return response;
+
+    }
+
+
+    @GetMapping(path = "verify")
+    @ResponseBody
+    public Response<VerificationEntity> getVerification() {
+        Iterable<VerificationEntity> all = mVerificationRepo.findAll();
+
+        List<VerificationEntity> vList = new ArrayList<>();
+        for (VerificationEntity entity : all) {
+            vList.add(entity);
+        }
+
+        VerificationEntity ve = null;
+        if (vList.size() >= 0) {
+            ve = vList.get((int) (System.currentTimeMillis() % vList.size()));
+        }
+
+
+        return Response.noNUllResponse(ve, "no re");
 
     }
 }

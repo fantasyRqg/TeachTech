@@ -1,8 +1,8 @@
 package com.wjy.tt.domain;
 
+import com.wjy.tt.Response;
 import com.wjy.tt.entity.CommentEntity;
 import com.wjy.tt.entity.CourseEntity;
-import com.wjy.tt.entity.Response;
 import com.wjy.tt.entity.UserEntity;
 import com.wjy.tt.repo.CommentRepo;
 import com.wjy.tt.repo.CourseRepository;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import static com.wjy.tt.Commons.FAILURE;
 import static com.wjy.tt.Commons.SUCCESS;
@@ -31,8 +32,8 @@ public class CommentController {
 
     @PostMapping(path = "add")
     @ResponseBody
-    public Response<String> addComment(@RequestParam long userId, @RequestParam String token, @RequestParam long courseId, @RequestParam String comment) {
-        Response<String> response = new Response<>();
+    public Response<Long> addComment(@RequestParam long userId, @RequestParam String token, @RequestParam long courseId, @RequestParam String comment) {
+        Response<Long> response = new Response<>();
 
         UserEntity user = mUserRepository.findByIdAndToken(userId, token);
 
@@ -54,13 +55,29 @@ public class CommentController {
 
         CommentEntity ce = new CommentEntity();
         ce.setContent(comment);
-        ce.setCourseId((int) courseId);
-        ce.setUserId((int) userId);
+        ce.setCourseId(courseId);
+        ce.setUserId(userId);
         ce.setTiemstamp(new Timestamp(System.currentTimeMillis()));
 
         mCommentRepo.save(ce);
 
-        response.setStatus(SUCCESS);
+        List<CommentEntity> cList = mCommentRepo.findAllByUserIdAndCourseId(userId, courseId);
+
+        long id = -1;
+        for (CommentEntity c : cList) {
+            if (c.getTiemstamp().equals(ce.getTiemstamp())) {
+                id = c.getId();
+                break;
+            }
+        }
+
+        if (id == -1) {
+            response.setStatus(FAILURE);
+        } else {
+            response.setStatus(SUCCESS);
+            response.setData(id);
+        }
+
 
         return response;
     }
@@ -72,5 +89,14 @@ public class CommentController {
 
 
         return Response.noNUllResponse(all, "not comment");
+    }
+
+
+    @GetMapping(path = "del")
+    @ResponseBody
+    public Response<String> delComment(@RequestParam long commentId) {
+        mCommentRepo.delete(commentId);
+
+        return Response.noNUllResponse("success", "success");
     }
 }

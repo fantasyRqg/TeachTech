@@ -1,6 +1,10 @@
 package com.wjy.tt.domain;
 
-import com.wjy.tt.entity.*;
+import com.wjy.tt.Response;
+import com.wjy.tt.entity.CourseEntity;
+import com.wjy.tt.entity.JoinCourseUserEntity;
+import com.wjy.tt.entity.TeacherEntity;
+import com.wjy.tt.entity.UserEntity;
 import com.wjy.tt.repo.CourseRepository;
 import com.wjy.tt.repo.JoinCourseUserRepo;
 import com.wjy.tt.repo.TeacherRepo;
@@ -10,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.wjy.tt.Commons.FAILURE;
 import static com.wjy.tt.Commons.SUCCESS;
@@ -61,9 +66,10 @@ public class CourseController {
     @GetMapping(path = "hasbuy")
     @ResponseBody
     public Response<Boolean> userHasByCourse(@RequestParam long userId, @RequestParam long courseId) {
-        JoinCourseUserEntity join = mJoinCourseUserRepo.findByCourseIdAndUserId(courseId, userId);
-
-        return Response.noNUllResponse(join != null, "");
+        List<JoinCourseUserEntity> join = mJoinCourseUserRepo.findAllByCourseIdAndUserId(courseId, userId);
+        if (join.size() == 0)
+            return Response.noNUllResponse(false, "");
+        return Response.noNUllResponse(join.get(0) != null, "");
     }
 
 

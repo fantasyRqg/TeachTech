@@ -10,6 +10,8 @@ $(document).ready(function () {
         var content = c.content;
         var userImage = c.userImage || 'avator/default.jpg';
 
+        var commentId = c.id;
+
         var commentItem = '        <div class="timeline-comment-wrapper js-comment-container">  \
                                     <div class="avatar-parent-child timeline-comment-avatar">   \
                                             <a href="#">    \
@@ -22,7 +24,8 @@ $(document).ready(function () {
                                             <div id="" class="comment previewable-edit timeline-comment js-comment js-task-list-container    \
                                         js-reorderable-task-lists reorderable-task-lists">  \
                                         <div class="timeline-comment-header">   \
-                                            <div class="timeline-comment-header-text">  \
+                                        <a id="del" style="float: right;margin-top: 8px;">删除</a>\
+                                                    <div class="timeline-comment-header-text">  \
                                             <strong>    \
                                             <a href="/Caij" class="author">' +
             userName
@@ -30,12 +33,14 @@ $(document).ready(function () {
                                             </strong>   \
                                             commented at  \
                                             <a href="#issue-227924972" class="timestamp">   \
-                                            <relative-time datetime="2017-05-11T09:07:01Z" title="May 11, 2017, 5:07 PM GMT+8"> '
+                                            <relative-time datetime="2017-05-11T09:07:01Z" title="May 11, 2017, 5:07 PM GMT+8"> \
+                                              \
+                                            '
             +
             new Date(createTime).toDateString()
             + ' </relative-time>    \
                                         </a>    \
-                                        </div>  \
+                                        </div>\
                                         </div>  \
                                         <div class="edit-comment-hide"> \
                                             <table class="d-block"> \
@@ -58,6 +63,18 @@ $(document).ready(function () {
 
         var item = $(commentItem);
         item.hide();
+        item.find("#del").click(function () {
+            $.getJSON('comment/del', {
+                commentId: commentId
+            })
+                .success(function (data) {
+                    if (data.status === 'success') {
+                        item.hide("normal", function () {
+                            item.remove();
+                        });
+                    }
+                })
+        });
         parent.prepend(item);
 
         item.show('normal');
@@ -91,6 +108,7 @@ $(document).ready(function () {
             comment: c.content
         }, function (data) {
             if (data.status === "success") {
+                c.id = data.data;
                 showComment(c, $('#comment'));
                 $('#text').val("");
             }
@@ -103,23 +121,7 @@ $(document).ready(function () {
 
         }
 
-        $.post("course/buy", {
-            courseId: classId,
-            userId: localStorage.userId,
-            token: localStorage.userToken
-        })
-            .success(function (data) {
-                if (data.status === "success") {
-                    // alert("购买成功");
-                    $("#buy").hide("normal");
-                } else {
-                    alert("购买失败");
-                }
-            })
-            .fail(function () {
-                alert("购买失败");
-            });
-
+        window.location.href = 'buyCourse.html?id=' + classId;
     });
 
 

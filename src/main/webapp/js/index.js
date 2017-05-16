@@ -9,6 +9,7 @@ $(document).ready(function () {
 
         uinfo.click(function () {
             localStorage.clear();
+            // window.location.href = "information.html";
             window.location.href = "login.html";
         })
     }

@@ -54,7 +54,7 @@ CREATE TABLE teach.comment
   user_id   BIGINT UNSIGNED              NOT NULL,
   course_id BIGINT UNSIGNED              NOT NULL,
   content   NVARCHAR(100),
-  tiemstamp TIMESTAMP                    NOT NULL
+  tiemstamp TIMESTAMP(6)                 NOT NULL
 );
 
 
@@ -113,3 +113,11 @@ VALUES
   ('Android项目开发实战 - 智能聊天机器人', NULL, 42, 'image/c_image_42.jpg', 'abc.mp4', FLOOR(RAND() * 401 + 100)),
   ('Android开发学习', NULL, 43, 'image/c_image_43.jpg', 'abc.mp4', FLOOR(RAND() * 401 + 100));
 
+
+INSERT INTO verification
+(code, picture) VALUES
+  ('5k64', 'vcode1.png'),
+  ('nans', 'vcode2.png'),
+  ('mgs7', 'vcode3.png'),
+  ('tvnq', 'vcode4.jpg'),
+  ('6528', 'vcode5.png');
