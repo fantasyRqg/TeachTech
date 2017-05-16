@@ -6,6 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/information.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/infomation.js"></script>
+
 </head>
 <body>
 
@@ -30,17 +33,35 @@
 </div>
 <div class="content">
     <div id="photo" class="photo_box">
-        <div class="photo_title">头像</div>
-        <img type="text" class="photo" name="login_photo"/>
-        <input type="file" class="file" name="submit_photo"/>
+        <div class="photo_title" style="margin-top: 55px;">头像</div>
+        <img id="img" class="photo" name="login_photo" src="avator/default.jpg"/>
+
+        <form id="img_uplaod" method="POST" action="/upload" enctype="multipart/form-data">
+            <input id="img_select" type="file" class="file" name="file"/>
+        </form>
     </div>
     <div id="username" class="box">
         <div class="title">用户名</div>
-        <input type="text" class="all" name="login_username" value=""/>
+        <input type="text" class="all" name="login_username" value="" readonly="readonly"/>
     </div>
     <div id="nickname" class="box">
         <div class="title">昵称</div>
         <input type="text" class="all" name="login_nickname" value=""/>
+    </div>
+    <div id="password" class="box">
+        <div class="title">密码</div>
+        <div class="button raised clickable"
+             style="width: 86px;
+                        float: left;
+                        margin-top: -6px;
+                        height: 4px;
+                        line-height: 0px;
+                        text-align: center;
+                        margin-left: 224px;">
+            <input class="toggle" type="checkbox"/>
+            <div class="anim"></div>
+            <span>更改密码</span>
+        </div>
     </div>
     <div id="phone" class="box">
         <div class="title">手机</div>
@@ -48,13 +69,23 @@
     </div>
     <div id="money" class="box">
         <div class="title">余额</div>
-        <input type="text" class="money_left" name="money" value=""/>
+        <input id="charge_val" type="text" class="money_left" name="money" value=""/>
         <div class="button raised clickable"
              style="width: 40px;float: right;margin-top: -6px;margin-right: 140px;height: 4px;line-height: 0px;text-align: center;">
-            <input class="toggle" type="checkbox"/>
+            <input id="charge_action" class="toggle" type="checkbox"/>
             <div class="anim"></div>
             <span>充 值</span>
         </div>
+    </div>
+
+
+    <div class="button raised clickable" style="    position: relative;
+    margin: inherit;
+    color: snow;
+    background: orange;">
+        <input id="logout" class="toggle" type="checkbox"/>
+        <div class="anim"></div>
+        <span>退出登陆</span>
     </div>
 </div>
 
