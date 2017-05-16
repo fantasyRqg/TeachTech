@@ -11,12 +11,19 @@
 
 <div class="header">
     <div class="header_top">
+
         <ul>
             <li class="li1"><a href="index.html"></a></li>
             <li class="li2"></li>
             <li class="li3">个人中心</li>
+            <li class="li5" style="float: right;">
+                <div class="button raised clickable" style="width: 40px;">
+                    <input class="toggle" type="checkbox"/>
+                    <div class="anim"></div>
+                    <span>保 存</span>
+                </div>
+            </li>
             <li class="li4">我已修改，现在就保存</li>
-            <li class="li5"><input type="button"></li>
         </ul>
         <div class="nav"></div>
     </div>
@@ -24,7 +31,7 @@
 <div class="content">
     <div id="photo" class="photo_box">
         <div class="photo_title">头像</div>
-        <input type="text" class="photo" name="login_photo"/>
+        <img type="text" class="photo" name="login_photo"/>
         <input type="file" class="file" name="submit_photo"/>
     </div>
     <div id="username" class="box">
@@ -42,7 +49,12 @@
     <div id="money" class="box">
         <div class="title">余额</div>
         <input type="text" class="money_left" name="money" value=""/>
-        <input type="button" class="money_right" name="money" value=""/>
+        <div class="button raised clickable"
+             style="width: 40px;float: right;margin-top: -6px;margin-right: 140px;height: 4px;line-height: 0px;text-align: center;">
+            <input class="toggle" type="checkbox"/>
+            <div class="anim"></div>
+            <span>充 值</span>
+        </div>
     </div>
 </div>
 
