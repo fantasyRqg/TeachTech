@@ -82,4 +82,36 @@ $(document).ready(function () {
         $("#img_uplaod").submit();
     });
 
+
+    $("#save_info").find("input").click(function () {
+        var img = $("#img").attr('src');
+        var nickName = $("#nickname").find("input").val();
+        var phone = $("#phone").find("input").val();
+
+
+        $.post('user/modify',
+            {
+                id: localStorage.userId,
+                token: localStorage.userToken,
+                avator: img,
+                nick: nickName,
+                phone: phone
+            }
+        )
+            .success(function (data) {
+                if (data.status === 'success') {
+                    localStorage.userNick = nickName;
+                    localStorage.userImg = img;
+                    alert("修改成功");
+                } else {
+                    alert("修改失败");
+                }
+
+
+            })
+            .fail(function () {
+                alert("修改失败");
+            })
+    });
+
 });

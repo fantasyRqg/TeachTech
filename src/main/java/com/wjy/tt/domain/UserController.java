@@ -310,4 +310,30 @@ public class UserController {
 
         return response;
     }
+
+
+    @PostMapping(path = "modify")
+    @ResponseBody
+    public Response<String> modifyInfo(@RequestParam int id, @RequestParam String token, @RequestParam String avator, @RequestParam String nick, @RequestParam String phone) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<String> response = new Response<>();
+
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
+
+        user.setProtrait(avator);
+        user.setNickName(nick);
+        user.setPhone(phone);
+
+        mUserRepository.save(user);
+
+        response.setStatus(SUCCESS);
+
+        return response;
+
+    }
 }
