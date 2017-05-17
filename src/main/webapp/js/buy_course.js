@@ -16,7 +16,7 @@ $(document).ready(function () {
         })
             .success(function (data) {
                 if (data.status === "success") {
-                    window.location.href = 'buySuccess.html';
+                    window.location.href = 'buySuccess.html?id=' + classId;
                 } else {
                     alert("购买失败");
                 }
