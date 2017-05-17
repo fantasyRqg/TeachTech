@@ -87,18 +87,21 @@ public class CourseController {
 
         UserEntity user = mUserRepository.findByIdAndToken(userId, token);
 
-        if (user == null) {
+        if (user == null || (user.getRemaining() - course.getPrice() < 0)) {
             response.setStatus(FAILURE);
             response.setMessage("user invalid");
             return response;
         }
 
+
         JoinCourseUserEntity cu = new JoinCourseUserEntity();
 
         cu.setCourseId((int) courseId);
         cu.setUserId((int) userId);
-
         mJoinCourseUserRepo.save(cu);
+
+        user.setRemaining(user.getRemaining() - course.getPrice());
+        mUserRepository.save(user);
 
         response.setStatus(SUCCESS);
 
