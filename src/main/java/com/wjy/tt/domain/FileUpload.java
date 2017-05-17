@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,7 +23,7 @@ import static com.wjy.tt.Commons.SUCCESS;
 @Controller
 public class FileUpload {
 
-    private static final String UPLOADED_FOLDER = "./image/";
+    private static final String UPLOADED_FOLDER = "/avator/";
 
     static {
         File file = new File(UPLOADED_FOLDER);
@@ -35,32 +35,28 @@ public class FileUpload {
 
     @PostMapping("/upload")
     @ResponseBody
-    public Response<String> singleFileUpload(@RequestParam("file") MultipartFile file,
-                                             RedirectAttributes redirectAttributes) {
+    public Response<String> singleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+
 
         Response<String> response = new Response<>();
 
 
         if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
 
             response.setStatus(FAILURE);
             response.setMessage("file invalid");
             return response;
         }
 
+        Path path = Paths.get(request.getServletContext().getRealPath(UPLOADED_FOLDER) + file.getOriginalFilename());
         try {
 
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             System.out.println("path = " + path.toAbsolutePath().toString());
 
             Files.write(path, bytes);
 
-
-            redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,7 +65,7 @@ public class FileUpload {
             return response;
         }
 
-        response.setData(file.getOriginalFilename());
+        response.setData(path.getFileName().toString());
         response.setStatus(SUCCESS);
 
         return response;

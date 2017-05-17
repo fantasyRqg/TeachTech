@@ -285,4 +285,55 @@ public class UserController {
         return Response.noNUllResponse(ve, "no re");
 
     }
+
+
+    @PostMapping(path = "recharge")
+    @ResponseBody
+    public Response<Integer> recharge(@RequestParam int id, @RequestParam String token, @RequestParam int charge) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<Integer> response = new Response<>();
+
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
+
+        user.setRemaining(charge);
+
+        mUserRepository.save(user);
+
+        response.setStatus(SUCCESS);
+        response.setData(charge);
+
+
+        return response;
+    }
+
+
+    @PostMapping(path = "modify")
+    @ResponseBody
+    public Response<String> modifyInfo(@RequestParam int id, @RequestParam String token, @RequestParam String avator, @RequestParam String nick, @RequestParam String phone) {
+        UserEntity user = mUserRepository.findByIdAndToken(id, token);
+        Response<String> response = new Response<>();
+
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user invalid");
+
+            return response;
+        }
+
+        user.setProtrait(avator);
+        user.setNickName(nick);
+        user.setPhone(phone);
+
+        mUserRepository.save(user);
+
+        response.setStatus(SUCCESS);
+
+        return response;
+
+    }
 }

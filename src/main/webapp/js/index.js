@@ -8,9 +8,9 @@ $(document).ready(function () {
         uinfo.children("a").html('<span class="span3">' + localStorage.userNick + '</span><img src="img/login.png" alt="">');
 
         uinfo.click(function () {
-            localStorage.clear();
-            // window.location.href = "information.html";
-            window.location.href = "login.html";
+            // localStorage.clear();
+            // window.location.href = "login.html";
+            window.location.href = "information.html";
         })
     }
 });
