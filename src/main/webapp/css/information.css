@@ -118,13 +118,13 @@ main header a {
     -o-transition: all 0.1s;
     -webkit-transition: all 0.1s;
     transition: all 0.1s;
-    background: #0c84e4;
-    box-shadow: 0px 1px 1px #085a9b;
+    background: #e3e3e3;
+    box-shadow: 0px 1px 1px #e3e3e3;
 }
 
 .button.raised:active {
-    background: #0c7dd8;
-    box-shadow: 0px 1px 1px #063e6b;
+    background: #e3e3e3;
+    box-shadow: 0px 1px 1px #e3e3e3;
 }
 
 span {
