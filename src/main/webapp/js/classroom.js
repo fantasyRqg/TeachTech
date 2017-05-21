@@ -24,7 +24,7 @@ $(document).ready(function () {
                                             <div id="" class="comment previewable-edit timeline-comment js-comment js-task-list-container    \
                                         js-reorderable-task-lists reorderable-task-lists">  \
                                         <div class="timeline-comment-header">   \
-                                        <a id="del" style="float: right;margin-top: 8px;">删除</a>\
+                                        <a id="del" style="float: right;margin-top: 8px; cursor: pointer;">删除</a>\
                                                     <div class="timeline-comment-header-text">  \
                                             <strong>    \
                                             <a href="/Caij" class="author">' +

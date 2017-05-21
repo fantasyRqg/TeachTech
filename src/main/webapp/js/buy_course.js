@@ -1,5 +1,5 @@
 /**
- * Created by rqg on 15/05/2017.
+ * Created by wjy on 15/05/2017.
  */
 $(document).ready(function () {
     $("#buy").click(function () {

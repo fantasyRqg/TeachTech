@@ -4,7 +4,7 @@ import com.wjy.tt.entity.VerificationEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by rqg on 15/05/2017.
+ * Created by wjy on 15/05/2017.
  */
 public interface VerificationRepo extends CrudRepository<VerificationEntity, Long> {
 
