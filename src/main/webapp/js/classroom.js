@@ -80,6 +80,9 @@ $(document).ready(function () {
         item.show('normal');
     }
 
+    if (userId !== localStorage.userId) {
+        item.children("#del").hide();
+    }
 
     $("#ipt").click(function () {
         if (!localStorage.userId) {

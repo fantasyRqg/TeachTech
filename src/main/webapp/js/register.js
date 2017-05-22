@@ -44,7 +44,7 @@ $(document).ready(function () {
         }
 
 
-        if (getChildrenInputVal("verify") !== $('#verify_img').attr('name')) {
+        if (getChildrenInputVal("verify").toUpperCase() !== $('#verify_img').attr('name').toUpperCase()) {
             showLoginError("验证码错误");
 
             return null;
