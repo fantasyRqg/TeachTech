@@ -33,6 +33,13 @@ public class FileUpload {
         }
     }
 
+    /**
+     * 用户头像文件上传
+     *
+     * @param file    文件
+     * @param request
+     * @return
+     */
     @PostMapping("/upload")
     @ResponseBody
     public Response<String> singleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {

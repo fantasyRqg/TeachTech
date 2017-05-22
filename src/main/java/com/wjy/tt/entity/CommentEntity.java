@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by wjy on 15/05/2017.
+ * Created by rqg on 22/05/2017.
  */
 @Entity
 @Table(name = "comment", schema = "teach", catalog = "")
@@ -13,7 +13,7 @@ public class CommentEntity {
     private long mUserId;
     private long mCourseId;
     private String mContent;
-    private Timestamp mTiemstamp;
+    private Timestamp mTimestamp;
 
     @Id
     @Column(name = "id")
@@ -56,13 +56,13 @@ public class CommentEntity {
     }
 
     @Basic
-    @Column(name = "tiemstamp")
-    public Timestamp getTiemstamp() {
-        return mTiemstamp;
+    @Column(name = "timestamp")
+    public Timestamp getTimestamp() {
+        return mTimestamp;
     }
 
-    public void setTiemstamp(Timestamp tiemstamp) {
-        mTiemstamp = tiemstamp;
+    public void setTimestamp(Timestamp timestamp) {
+        mTimestamp = timestamp;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class CommentEntity {
         if (mUserId != that.mUserId) return false;
         if (mCourseId != that.mCourseId) return false;
         if (mContent != null ? !mContent.equals(that.mContent) : that.mContent != null) return false;
-        return mTiemstamp != null ? mTiemstamp.equals(that.mTiemstamp) : that.mTiemstamp == null;
+        return mTimestamp != null ? mTimestamp.equals(that.mTimestamp) : that.mTimestamp == null;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class CommentEntity {
         result = 31 * result + (int) (mUserId ^ (mUserId >>> 32));
         result = 31 * result + (int) (mCourseId ^ (mCourseId >>> 32));
         result = 31 * result + (mContent != null ? mContent.hashCode() : 0);
-        result = 31 * result + (mTiemstamp != null ? mTiemstamp.hashCode() : 0);
+        result = 31 * result + (mTimestamp != null ? mTimestamp.hashCode() : 0);
         return result;
     }
 }

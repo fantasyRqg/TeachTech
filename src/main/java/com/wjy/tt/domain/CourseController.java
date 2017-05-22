@@ -1,4 +1,7 @@
 package com.wjy.tt.domain;
+/**
+ * Created by wjy on 09/05/2017.
+ */
 
 import com.wjy.tt.Response;
 import com.wjy.tt.entity.CourseEntity;
@@ -20,7 +23,7 @@ import static com.wjy.tt.Commons.FAILURE;
 import static com.wjy.tt.Commons.SUCCESS;
 
 /**
- * Created by wjy on 09/05/2017.
+ * 课程相关接口
  */
 @Controller
 @RequestMapping(path = "course")
@@ -34,6 +37,11 @@ public class CourseController {
     @Autowired
     JoinCourseUserRepo mJoinCourseUserRepo;
 
+    /**
+     * 获取所有课程信息
+     *
+     * @return
+     */
     @GetMapping(path = "all")
     @ResponseBody
     public Response<Iterable<CourseEntity>> getAllCourses() {
@@ -45,6 +53,12 @@ public class CourseController {
         return Response.noNUllResponse(all, "can not load courses");
     }
 
+    /**
+     * 获取单个课程信息
+     * @param id 课程ID
+     *
+     * @return
+     */
     @GetMapping(path = "info")
     @ResponseBody
     public Response<CourseEntity> getCourseById(@RequestParam Long id) {
@@ -53,7 +67,11 @@ public class CourseController {
         return Response.noNUllResponse(one, "course not exist");
     }
 
-
+    /**
+     * 老师信息
+     * @param id 老师ID
+     * @return
+     */
     @GetMapping(path = "teacher")
     @ResponseBody
     public Response<TeacherEntity> getTeacherById(@RequestParam Long id) {
@@ -62,7 +80,12 @@ public class CourseController {
         return Response.noNUllResponse(one, "can not find teacher");
     }
 
-
+    /**
+     * 判断摸个课程是否被买过
+     * @param userId 学生ID
+     * @param courseId 课程ID
+     * @return
+     */
     @GetMapping(path = "hasbuy")
     @ResponseBody
     public Response<Boolean> userHasByCourse(@RequestParam long userId, @RequestParam long courseId) {
@@ -73,6 +96,13 @@ public class CourseController {
     }
 
 
+    /**
+     * 购买课程
+     * @param courseId 课程ID
+     * @param userId 用户ID
+     * @param token 用户token
+     * @return
+     */
     @PostMapping(path = "buy")
     @ResponseBody
     public Response<String> buyCourse(@RequestParam long courseId, @RequestParam long userId, @RequestParam String token) {
@@ -108,39 +138,4 @@ public class CourseController {
 
         return response;
     }
-
-
-    @PostMapping(path = "add")
-    @ResponseBody
-    public Response<String> addCourse(@RequestBody CourseEntity course) {
-
-        Response<String> response = new Response<>();
-        try {
-            mCourseRepository.save(course);
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            response.setStatus(FAILURE);
-            return response;
-        }
-
-
-        response.setStatus(SUCCESS);
-        return response;
-
-    }
-
-
-    @GetMapping(path = "remove")
-    @ResponseBody
-    Response<String> removeCourse(@RequestParam long id) {
-        Response<String> response = new Response<>();
-
-        mCourseRepository.delete(id);
-
-        response.setStatus(SUCCESS);
-        return response;
-    }
-
-
 }

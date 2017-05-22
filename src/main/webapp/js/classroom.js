@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         var userName = c.userName;
         var userId = c.userId;
-        var createTime = c.createTime;
+        var createTime = c.createTime || c.timestamp;
         var content = c.content;
         var userImage = c.userImage || 'avator/default.jpg';
 
@@ -75,14 +75,15 @@ $(document).ready(function () {
                     }
                 })
         });
+        if (userId !== parseInt(localStorage.userId)) {
+            item.find("#del").hide();
+        }
+
         parent.prepend(item);
 
         item.show('normal');
     }
 
-    if (userId !== localStorage.userId) {
-        item.children("#del").hide();
-    }
 
     $("#ipt").click(function () {
         if (!localStorage.userId) {
@@ -94,7 +95,7 @@ $(document).ready(function () {
         var c = {};
         c.userName = localStorage.userName;
         c.content = $("#text").val();
-        c.createTime = new Date().getMilliseconds();
+        c.createTime = Date.now();
         c.userId = localStorage.userId;
         c.courseId = classId;
         c.token = localStorage.userToken;
@@ -151,11 +152,11 @@ $(document).ready(function () {
             var commentList = data.data;
             var cl = $('#comment');
             for (var i = 0; i < commentList.length; i++) {
+                $.getJSON();
                 showComment(commentList[i], cl);
             }
         }
     });
-
 
     if (localStorage.userId) {
         $.getJSON("course/hasbuy", {

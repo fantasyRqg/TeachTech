@@ -3,7 +3,7 @@ package com.wjy.tt.entity;
 import javax.persistence.*;
 
 /**
- * Created by wjy on 15/05/2017.
+ * Created by rqg on 22/05/2017.
  */
 @Entity
 @Table(name = "join_course_user", schema = "teach", catalog = "")

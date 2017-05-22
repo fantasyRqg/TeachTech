@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.wjy.tt.Commons.FAILURE;
@@ -30,6 +31,16 @@ public class CommentController {
     @Autowired
     private CommentRepo mCommentRepo;
 
+
+    /**
+     * 添加评论
+     *
+     * @param userId   用户id
+     * @param token    用户 token
+     * @param courseId 课程 id
+     * @param comment  评论内容
+     * @return
+     */
     @PostMapping(path = "add")
     @ResponseBody
     public Response<Long> addComment(@RequestParam long userId, @RequestParam String token, @RequestParam long courseId, @RequestParam String comment) {
@@ -57,7 +68,7 @@ public class CommentController {
         ce.setContent(comment);
         ce.setCourseId(courseId);
         ce.setUserId(userId);
-        ce.setTiemstamp(new Timestamp(System.currentTimeMillis()));
+        ce.setTimestamp(new Timestamp(System.currentTimeMillis()));
 
         mCommentRepo.save(ce);
 
@@ -65,7 +76,7 @@ public class CommentController {
 
         long id = -1;
         for (CommentEntity c : cList) {
-            if (c.getTiemstamp().equals(ce.getTiemstamp())) {
+            if (c.getTimestamp().equals(ce.getTimestamp())) {
                 id = c.getId();
                 break;
             }
@@ -82,16 +93,39 @@ public class CommentController {
         return response;
     }
 
+    /**
+     * 获取课程所有评论
+     *
+     * @param courseId 课程ID
+     * @return
+     */
     @GetMapping(path = "course")
     @ResponseBody
-    public Response<Iterable<CommentEntity>> getCommentsByCourse(@RequestParam long courseId) {
+    public Response<Iterable<CommentUserEntity>> getCommentsByCourse(@RequestParam long courseId) {
         Iterable<CommentEntity> all = mCommentRepo.findAllByCourseId(courseId);
 
+        List<CommentUserEntity> cueList = new ArrayList<>();
+        for (CommentEntity ce : all) {
+            CommentUserEntity commentUserEntity = new CommentUserEntity();
+            commentUserEntity.setUserName(mUserRepository.findOne(ce.getUserId()).getNickName());
+            commentUserEntity.setContent(ce.getContent());
+            commentUserEntity.setCourseId(ce.getCourseId());
+            commentUserEntity.setId(ce.getId());
+            commentUserEntity.setTimestamp(ce.getTimestamp());
+            commentUserEntity.setUserId(ce.getUserId());
+            cueList.add(commentUserEntity);
+        }
 
-        return Response.noNUllResponse(all, "not comment");
+        return Response.noNUllResponse(cueList, "not comment");
     }
 
 
+    /**
+     * 删除评论
+     *
+     * @param commentId 评论ID
+     * @return
+     */
     @GetMapping(path = "del")
     @ResponseBody
     public Response<String> delComment(@RequestParam long commentId) {

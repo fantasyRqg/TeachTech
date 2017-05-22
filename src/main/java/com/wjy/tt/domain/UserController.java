@@ -26,6 +26,10 @@ import static com.wjy.tt.Commons.SUCCESS;
  * Created by wjy on 07/05/2017.
  */
 
+
+/**
+ * 用户相关接口
+ */
 @Controller
 @RequestMapping(path = "user")
 public class UserController {
@@ -49,6 +53,11 @@ public class UserController {
 
     }
 
+    /**
+     * 获取所有用户
+     *
+     * @return
+     */
     @GetMapping(path = "all")
     @ResponseBody
     public Iterable<UserEntity> getAllUsers() {
@@ -56,6 +65,12 @@ public class UserController {
     }
 
 
+    /**
+     * 注册接口
+     *
+     * @param user user info
+     * @return
+     */
     @PostMapping(path = "register")
     @ResponseBody
     public Response<UserEntity> registerUser(@RequestBody UserEntity user) {
@@ -109,6 +124,13 @@ public class UserController {
         return true;
     }
 
+    /**
+     * 登陆接口
+     *
+     * @param name 用户名
+     * @param pwd  密码
+     * @return
+     */
     @PostMapping(path = "login")
     @ResponseBody
     public Response<UserEntity> userLogin(@RequestParam String name, @RequestParam String pwd) {
@@ -135,6 +157,13 @@ public class UserController {
     }
 
 
+    /**
+     * 检查手机是否正确，如果正确则修改密码，用于忘记密码
+     *
+     * @param phone 手机号码
+     * @param pwd   新密码
+     * @return
+     */
     @GetMapping(path = "phone/right")
     @ResponseBody
     public Response<String> rightPhone(@RequestParam String phone, @RequestParam String pwd) {
@@ -156,6 +185,14 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 更改密码
+     *
+     * @param id    用户ID
+     * @param token 用户token
+     * @param pwd   新密码
+     * @return
+     */
     @PostMapping(path = "password")
     @ResponseBody
     public Response<String> changePassword(@RequestParam int id, @RequestParam String token, @RequestParam String pwd) {
@@ -179,6 +216,13 @@ public class UserController {
     }
 
 
+    /**
+     * 获取用户信息
+     *
+     * @param id    用户ID
+     * @param token 用户token
+     * @return
+     */
     @GetMapping(path = "info")
     @ResponseBody
     public Response<UserEntity> getUserById(@RequestParam int id, @RequestParam String token) {
@@ -188,7 +232,14 @@ public class UserController {
         return Response.noNUllResponse(user, "该用户不存在");
     }
 
-
+    /**
+     * 修改用户昵称
+     *
+     * @param id       用户ID
+     * @param token    用户token
+     * @param nickName 新昵称
+     * @return
+     */
     @PostMapping(path = "modify/nickName")
     @ResponseBody
     public Response<String> modifyNickName(@RequestParam int id, @RequestParam String token, @RequestParam String nickName) {
@@ -211,6 +262,14 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 修改用户头像
+     *
+     * @param id    用户ID
+     * @param token 用户token
+     * @param photo 用户头像文件名
+     * @return
+     */
     @PostMapping(path = "modify/photo")
     @ResponseBody
     public Response<String> modifyPhoto(@RequestParam int id, @RequestParam String token, @RequestParam String photo) {
@@ -237,6 +296,13 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 获取一个用户购买的所有课程
+     *
+     * @param id    用户ID
+     * @param token 用户token
+     * @return
+     */
     @GetMapping(path = "courses")
     @ResponseBody
     public Response<Iterable<CourseEntity>> getMyCourses(@RequestParam int id, @RequestParam String token) {
@@ -265,7 +331,11 @@ public class UserController {
 
     }
 
-
+    /**
+     * 获取验证码， 获得验证码图片以及验证码值
+     *
+     * @return
+     */
     @GetMapping(path = "verify")
     @ResponseBody
     public Response<VerificationEntity> getVerification() {
@@ -286,7 +356,14 @@ public class UserController {
 
     }
 
-
+    /**
+     * 充值接口
+     *
+     * @param id     用户ID
+     * @param token  用户token
+     * @param charge 充值数据
+     * @return
+     */
     @PostMapping(path = "recharge")
     @ResponseBody
     public Response<Integer> recharge(@RequestParam int id, @RequestParam String token, @RequestParam int charge) {
@@ -311,7 +388,16 @@ public class UserController {
         return response;
     }
 
-
+    /**
+     * 修改用户信息
+     *
+     * @param id     用户ID
+     * @param token  用户token
+     * @param avator 用户头像文件名
+     * @param nick   昵称
+     * @param phone  手机号码
+     * @return
+     */
     @PostMapping(path = "modify")
     @ResponseBody
     public Response<String> modifyInfo(@RequestParam int id, @RequestParam String token, @RequestParam String avator, @RequestParam String nick, @RequestParam String phone) {
