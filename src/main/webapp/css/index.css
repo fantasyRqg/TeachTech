@@ -152,12 +152,7 @@ body, .a, .a .header, .a .header_top {
     margin-right: 40px;
 }
 
-.header_bottom .header_bottom_content .search img {
-    position: relative;
-    float: right;
-    top: 20px;
-    right: 15px;
-}
+
 
 .header_bottom .header_bottom_content .nav ul {
     float: right;
@@ -180,10 +175,9 @@ body, .a, .a .header, .a .header_top {
 }
 
 .header_bottom .header_bottom_content .search img {
-    float: right;
     position: absolute;
     top: 21px;
-    left: 1170px;
+    right: 60px;
 }
 
 .header_bottom .header_bottom_content .nav ul li a {
