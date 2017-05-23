@@ -60,8 +60,8 @@ public class UserController {
      */
     @GetMapping(path = "all")
     @ResponseBody
-    public Iterable<UserEntity> getAllUsers() {
-        return mUserRepository.findAll();
+    public Response<Iterable<UserEntity>> getAllUsers() {
+        return Response.noNUllResponse(mUserRepository.findAll(), "no user");
     }
 
 
@@ -421,5 +421,27 @@ public class UserController {
 
         return response;
 
+    }
+
+
+    @GetMapping(path = "del")
+    @ResponseBody
+    public Response<String> delUser(@RequestParam long id) {
+        Response<String> response = new Response<>();
+
+        UserEntity user = mUserRepository.findOne(id);
+        if (user == null) {
+            response.setStatus(FAILURE);
+            response.setMessage("user id invalid");
+
+            return response;
+        }
+
+        mUserRepository.delete(id);
+
+
+        response.setStatus(SUCCESS);
+
+        return response;
     }
 }
