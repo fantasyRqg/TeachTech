@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+/**
+ * spring boot 程序入口
+ */
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
     @Override

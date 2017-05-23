@@ -106,13 +106,15 @@ public class CommentController {
 
         List<CommentUserEntity> cueList = new ArrayList<>();
         for (CommentEntity ce : all) {
+            UserEntity user = mUserRepository.findOne(ce.getUserId());
             CommentUserEntity commentUserEntity = new CommentUserEntity();
-            commentUserEntity.setUserName(mUserRepository.findOne(ce.getUserId()).getNickName());
+            commentUserEntity.setUserName(user.getNickName());
             commentUserEntity.setContent(ce.getContent());
             commentUserEntity.setCourseId(ce.getCourseId());
             commentUserEntity.setId(ce.getId());
             commentUserEntity.setTimestamp(ce.getTimestamp());
             commentUserEntity.setUserId(ce.getUserId());
+            commentUserEntity.setUserImage(user.getProtrait());
             cueList.add(commentUserEntity);
         }
 

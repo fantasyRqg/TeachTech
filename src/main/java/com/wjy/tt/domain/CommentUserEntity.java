@@ -8,6 +8,16 @@ import com.wjy.tt.entity.CommentEntity;
 public class CommentUserEntity extends CommentEntity {
     private String mUserName;
 
+    private String mUserImage;
+
+    public String getUserImage() {
+        return mUserImage;
+    }
+
+    public void setUserImage(String userImage) {
+        mUserImage = userImage;
+    }
+
     public String getUserName() {
         return mUserName;
     }
