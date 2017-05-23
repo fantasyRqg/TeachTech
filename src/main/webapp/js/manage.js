@@ -13,7 +13,7 @@ $(document).ready(function () {
             <td id="phone">adf</td>         \
         <td id="remain">adsf</td>         \
         <td>         \
-        <a id="del">删除</a>         \
+        <a style="cursor: pointer" id="del">删除</a>         \
         </td>         \
         </tr>';
 
