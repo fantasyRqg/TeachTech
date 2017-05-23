@@ -87,7 +87,7 @@ $(document).ready(function () {
                     showLoginError(data.message);
                 });
         }
-    });
+    });//登录保存登录信息
 
     function getNewVerfication() {
         $.getJSON('user/verify')
@@ -102,6 +102,7 @@ $(document).ready(function () {
             });
     }
 
+//刷新验证码
 
     getNewVerfication();
     $('#new_verify').click(function () {
