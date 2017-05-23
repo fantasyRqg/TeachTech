@@ -424,6 +424,12 @@ public class UserController {
     }
 
 
+    /**
+     * 删除用户
+     *
+     * @param id 用户 id
+     * @return
+     */
     @GetMapping(path = "del")
     @ResponseBody
     public Response<String> delUser(@RequestParam long id) {
