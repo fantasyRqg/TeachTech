@@ -107,6 +107,8 @@ public class CommentController {
         List<CommentUserEntity> cueList = new ArrayList<>();
         for (CommentEntity ce : all) {
             UserEntity user = mUserRepository.findOne(ce.getUserId());
+            if (user == null)
+                continue;
             CommentUserEntity commentUserEntity = new CommentUserEntity();
             commentUserEntity.setUserName(user.getNickName());
             commentUserEntity.setContent(ce.getContent());
