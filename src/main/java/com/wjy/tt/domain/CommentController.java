@@ -102,7 +102,9 @@ public class CommentController {
     @GetMapping(path = "course")
     @ResponseBody
     public Response<Iterable<CommentUserEntity>> getCommentsByCourse(@RequestParam long courseId) {
+
         Iterable<CommentEntity> all = mCommentRepo.findAllByCourseId(courseId);
+
 
         List<CommentUserEntity> cueList = new ArrayList<>();
         for (CommentEntity ce : all) {

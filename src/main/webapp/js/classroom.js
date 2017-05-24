@@ -99,6 +99,7 @@ $(document).ready(function () {
         c.userId = localStorage.userId;
         c.courseId = classId;
         c.token = localStorage.userToken;
+        c.userImage = localStorage.userImg;
 
         if (!c.content || c.content.trim() === "") {
             return;
