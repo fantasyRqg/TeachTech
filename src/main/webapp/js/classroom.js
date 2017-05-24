@@ -75,7 +75,9 @@ $(document).ready(function () {
                     }
                 })
         });
-        if (userId !== parseInt(localStorage.userId)) {
+
+        if (userId !== parseInt(localStorage.userId)
+            && userId !== localStorage.userId) {
             item.find("#del").hide();
         }
 
